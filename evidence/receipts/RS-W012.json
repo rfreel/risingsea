@@ -1,0 +1,29 @@
+{
+  "schema": "risingsea.work-receipt.v1",
+  "work_id": "RS-W012",
+  "title": "Obligation Residual Compiler",
+  "status": "PASS",
+  "completed_at": "2026-08-31",
+  "authority": "verification_receipt",
+  "basis": {
+    "plan": "docs/superpowers/plans/2026-08-31-adversarial-diagnostic-residual-flywheel.md",
+    "spec": "specs/expert-domain-control-plane.md",
+    "red_ci_run": 33451652659,
+    "green_ci_run": 33451823466,
+    "green_commit": "ecf90b8445c75ff69827fd6e3259392c3484e8d8"
+  },
+  "verified": [
+    "finite obligation partition is total and disjoint",
+    "only UNSATISFIED obligations enter TODO candidates",
+    "UNKNOWN and CONTRADICTED remain separate non-executable frontier classes",
+    "duplicate-looking obligations do not merge without an explicit equivalence witness",
+    "explicit equivalence witness can collapse a duplicate residual deterministically",
+    "scope mismatch invalidates an equivalence witness and blocks residualization",
+    "invalid obligation state blocks rather than guessing a partition",
+    "input permutation produces identical residual output",
+    "all prior integrity gates and generated projections remain green"
+  ],
+  "strongest_falsifier": "An UNKNOWN, CONTRADICTED, invalid, or merely similar obligation can become executable work, or a scope-changing equivalence can silently remove a required obligation.",
+  "result": "PASS",
+  "next": "RS-W013 must lower only UNSATISFIED residuals into packets with zero unresolved design/scope/oracle/failure/authority decisions and a stale-head guard."
+}
