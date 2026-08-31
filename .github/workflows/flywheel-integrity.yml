@@ -41,6 +41,8 @@ jobs:
         run: python tools/test_discovery.py
       - name: Run obligation residual contract
         run: python tools/test_residualize.py
+      - name: Run WorkPacket lowering contract
+        run: python tools/test_work_packet_lowering.py
       - name: Run compact frontier contract
         run: python tools/test_frontier_projection.py
       - name: Run read-only doctor
