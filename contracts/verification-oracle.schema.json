@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risingsea.verification-oracle.schema.v1",
+  "title": "Verification Oracle",
+  "type": "object",
+  "required": ["oracle_id", "kind", "command", "success_contract", "failure_contract"],
+  "properties": {
+    "oracle_id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["command", "structural", "observation", "reconciliation"]},
+    "command": {"type": "string", "minLength": 1},
+    "success_contract": {"type": "string", "minLength": 1},
+    "failure_contract": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}
