@@ -2,15 +2,6 @@
   "blocked": [
     {
       "depends_on": [
-        "RS-W008",
-        "RS-W009",
-        "RS-W010"
-      ],
-      "id": "RS-W011",
-      "title": "Implement unresolved discovery engine"
-    },
-    {
-      "depends_on": [
         "RS-W009",
         "RS-W011"
       ],
@@ -95,14 +86,14 @@
     }
   ],
   "counts": {
-    "blocked": 10,
-    "complete": 7,
+    "blocked": 9,
+    "complete": 8,
     "other": 0,
     "partial": 1,
     "ready": 2,
     "total": 20
   },
-  "next_command": "Write adversarial repair/oracle selection tests before implementing the repair registry and selector.",
+  "next_command": "Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.",
   "partial": [
     {
       "id": "RS-W001",
@@ -113,10 +104,10 @@
   ],
   "ready": [
     {
-      "id": "RS-W010",
-      "next_action": "Write adversarial repair/oracle selection tests before implementing the repair registry and selector.",
+      "id": "RS-W011",
+      "next_action": "Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.",
       "priority": 0,
-      "title": "Implement repair recipe and verification-oracle registry"
+      "title": "Implement unresolved discovery engine"
     },
     {
       "id": "RS-W001B",
@@ -129,14 +120,15 @@
   "source": "fold(work/items.jsonl, work/events.jsonl)",
   "top_ready": {
     "acceptance": [
-      "Every recipe names an exact verification oracle",
-      "Unknown preconditions block recipe selection",
-      "Ruin class and authority are explicit"
+      "Prior exact cases and exemplars are searched before new generation",
+      "At least two live rivals are preserved until evidence dominates",
+      "APR convergence does not upgrade truth",
+      "New distinctions can emit checker/rule/representation/recipe candidates"
     ],
-    "id": "RS-W010",
-    "next_action": "Write adversarial repair/oracle selection tests before implementing the repair registry and selector.",
-    "objective": "Represent expert repair as bounded transition contracts with exact preconditions, actions, oracles, falsifiers, recovery and authority.",
-    "strongest_falsifier": "A repair can be selected without a defined proof of completion.",
-    "title": "Implement repair recipe and verification-oracle registry"
+    "id": "RS-W011",
+    "next_action": "Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.",
+    "objective": "When normal repair cannot resolve a problem, preserve rivals and mechanically seek discriminating evidence instead of improvising.",
+    "strongest_falsifier": "The discovery engine collapses an unresolved rival set to one answer without new evidence.",
+    "title": "Implement unresolved discovery engine"
   }
 }
