@@ -1,0 +1,51 @@
+{
+  "schema": "risingsea.receipt.v1",
+  "work_id": "RS-W000",
+  "claim_status": "PASS",
+  "observed_outputs": [
+    "README.md",
+    "START-HERE.md",
+    "AGENTS.md",
+    "specs/current-system.md",
+    "work/README.md",
+    "work/items.jsonl",
+    "evidence/README.md",
+    "memory/README.md",
+    "sources/README.md",
+    "generated/triage.json",
+    "generated/frontier.md",
+    "tools/build_frontier.py",
+    "tools/doctor.py",
+    ".github/workflows/flywheel-integrity.yml"
+  ],
+  "verification": {
+    "type": "structural-bootstrap",
+    "acceptance": {
+      "cold_agent_entrypoint": "START-HERE.md",
+      "machine_work_graph": "work/items.jsonl",
+      "human_frontier": "generated/frontier.md",
+      "robot_triage": "generated/triage.json",
+      "doctor": "tools/doctor.py",
+      "ci_backpressure": ".github/workflows/flywheel-integrity.yml"
+    }
+  },
+  "accretion_delta": {
+    "new_workflows": [
+      "source → spec → work → witness → verify → receipt → learn → reenter"
+    ],
+    "new_guardrails": [
+      "exactly one highest-value ready work packet per loop",
+      "COMPLETE work requires a receipt",
+      "generated projections must reproduce from canonical work state"
+    ],
+    "new_tools": [
+      "tools/build_frontier.py",
+      "tools/doctor.py"
+    ]
+  },
+  "unknowns": [
+    "No production Rising Sea runtime is established by this receipt.",
+    "Agent-ergonomic improvement is not empirically measured yet.",
+    "The historical planning corpus has not yet been imported into sources/registry.jsonl."
+  ]
+}
