@@ -1,28 +1,25 @@
 # Current Frontier
 
-> GENERATED from `work/items.jsonl` by `tools/build_frontier.py`. Do not edit by hand.
+> GENERATED from `fold(work/items.jsonl, work/events.jsonl)` by `tools/build_frontier.py`. Do not edit by hand.
 
 ## Highest-value ready item
 
-**RS-W007 — Implement RuinGuard adapter boundary**
+**RS-W010 — Implement repair recipe and verification-oracle registry**
 
-Fail closed on ruin-class operations using DCG/FCP-style mechanical enforcement before ordinary action selection.
+Represent expert repair as bounded transition contracts with exact preconditions, actions, oracles, falsifiers, recovery and authority.
 
 Acceptance:
 
-- Destructive Git/filesystem/database and scope-explosion fixtures are blocked or require review
-- Safe reads remain allowed
-- Malformed classification never silently allows
+- Every recipe names an exact verification oracle
+- Unknown preconditions block recipe selection
+- Ruin class and authority are explicit
 
-Strongest falsifier: An unclassified potentially catastrophic operation reaches execution as allowed.
+Strongest falsifier: A repair can be selected without a defined proof of completion.
 
-Next action: `Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.`
+Next action: `Write adversarial repair/oracle selection tests before implementing the repair registry and selector.`
 
 ## Blocked
 
-- `RS-W008` — Implement deterministic expert router — blocked by: RS-W005, RS-W006, RS-W007
-- `RS-W009` — Implement expert diagnostic compiler — blocked by: RS-W008
-- `RS-W010` — Implement repair recipe and verification-oracle registry — blocked by: RS-W009
 - `RS-W011` — Implement unresolved discovery engine — blocked by: RS-W008, RS-W009, RS-W010
 - `RS-W012` — Implement obligation residual compiler — blocked by: RS-W009, RS-W011
 - `RS-W013` — Implement frontier-resolved WorkPacket lowering — blocked by: RS-W010, RS-W012
