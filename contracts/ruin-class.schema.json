@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risingsea.ruin-class.schema.v1",
+  "title": "Rising Sea Ruin Class Registry",
+  "type": "object",
+  "required": ["schema", "classes"],
+  "properties": {
+    "schema": {"const": "risingsea.ruin-classes.v1"},
+    "classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "decision", "description"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "decision": {"enum": ["BLOCK", "REVIEW_REQUIRED"]},
+          "description": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
