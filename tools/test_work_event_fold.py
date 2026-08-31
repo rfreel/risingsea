@@ -21,9 +21,7 @@ def main() -> int:
         print(f"FAIL missing {EVENTS.relative_to(ROOT)}", file=sys.stderr)
         return 1
 
-    result = subprocess.run(
-        [sys.executable, str(WORK_STATE), "--json"], cwd=ROOT, text=True, capture_output=True, check=False
-    )
+    result = subprocess.run([sys.executable, str(WORK_STATE), "--json"], cwd=ROOT, text=True, capture_output=True, check=False)
     if result.returncode != 0:
         print(result.stdout, file=sys.stderr)
         print(result.stderr, file=sys.stderr)
@@ -31,12 +29,12 @@ def main() -> int:
     payload = json.loads(result.stdout)
     by_id = {row["id"]: row for row in payload["items"]}
 
-    completed = ["RS-W007", "RS-W008", "RS-W009A", "RS-W009", "RS-W010", "RS-W011"]
+    completed = ["RS-W007", "RS-W008", "RS-W009A", "RS-W009", "RS-W010", "RS-W011", "RS-W012"]
     checks = [(by_id[item_id]["status"] == "COMPLETE", f"{item_id} not COMPLETE") for item_id in completed]
     checks.extend([
-        (by_id["RS-W012"]["status"] == "READY", "RS-W012 not READY"),
+        (by_id["RS-W013"]["status"] == "READY", "RS-W013 not READY"),
         ("RS-W009A" in by_id["RS-W009"]["depends_on"], "RS-W009 missing RS-W009A dependency"),
-        (payload["event_count"] >= 10, "expected append-only transition events"),
+        (payload["event_count"] >= 12, "expected append-only transition events"),
     ])
     for item in payload["items"]:
         if item.get("status") == "READY":
