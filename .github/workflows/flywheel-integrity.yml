@@ -23,6 +23,8 @@ jobs:
         run: python tools/check_compile_inputs.py --json
       - name: Run domain machine contract
         run: python tools/test_domain_machines.py
+      - name: Run compact frontier contract
+        run: python tools/test_frontier_projection.py
       - name: Run read-only doctor
         run: python tools/doctor.py --json
       - name: Rebuild generated source inventory
