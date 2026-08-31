@@ -1,0 +1,2 @@
+{"oracle_id":"oracle.build.api.compile","kind":"command","command":"python -m compileall src/api.py && python -m unittest tests.api_test","success_contract":"Both compile and declared regression test exit zero.","failure_contract":"Any non-zero exit preserves the repair as unverified."}
+{"oracle_id":"oracle.security.guard.policy","kind":"structural","command":"python tools/test_ruin_guard.py","success_contract":"All ruin-guard adversarial and benign fixtures pass.","failure_contract":"Any guard regression blocks promotion."}
