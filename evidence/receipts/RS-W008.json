@@ -1,0 +1,23 @@
+{
+  "schema": "risingsea.work-receipt.v1",
+  "work_id": "RS-W008",
+  "verdict": "PASS",
+  "red_ci_run": 33449802805,
+  "observed_ci_run": 33449864546,
+  "witnesses": [
+    "EXACT_RESULT outranks model fallback",
+    "NEGATIVE_MEMO outranks semantic and model fallback",
+    "COMPILED_RULE outranks model fallback",
+    "incomplete search miss becomes SEARCH_INCOMPLETE / UNKNOWN and blocks model invocation",
+    "model fallback is permitted only after deterministic miss plus complete search miss",
+    "model route has authority_effect candidate_only",
+    "all prior repository integrity and ruin-guard gates remain green"
+  ],
+  "artifacts": [
+    "tools/expert_router.py",
+    "routing/precedence.json",
+    "contracts/route-decision.schema.json",
+    "tools/test_expert_router.py"
+  ],
+  "claim_boundary": "This proves routing precedence over the test catalog contract. It does not establish semantic-search completeness for arbitrary external indexes or correctness of model-generated candidates."
+}
