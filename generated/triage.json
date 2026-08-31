@@ -3,14 +3,6 @@
     {
       "depends_on": [
         "RS-W005",
-        "RS-W006"
-      ],
-      "id": "RS-W007",
-      "title": "Implement RuinGuard adapter boundary"
-    },
-    {
-      "depends_on": [
-        "RS-W005",
         "RS-W006",
         "RS-W007"
       ],
@@ -126,14 +118,14 @@
     }
   ],
   "counts": {
-    "blocked": 14,
-    "complete": 2,
+    "blocked": 13,
+    "complete": 3,
     "other": 0,
     "partial": 1,
     "ready": 2,
     "total": 19
   },
-  "next_command": "Write and observe the failing capability/truth-source contract test before implementing deterministic probes.",
+  "next_command": "Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.",
   "partial": [
     {
       "id": "RS-W001",
@@ -144,10 +136,10 @@
   ],
   "ready": [
     {
-      "id": "RS-W006",
-      "next_action": "Write and observe the failing capability/truth-source contract test before implementing deterministic probes.",
+      "id": "RS-W007",
+      "next_action": "Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.",
       "priority": 0,
-      "title": "Implement capability and truth-source observation"
+      "title": "Implement RuinGuard adapter boundary"
     },
     {
       "id": "RS-W001B",
@@ -160,14 +152,14 @@
   "source": "work/items.jsonl",
   "top_ready": {
     "acceptance": [
-      "OBSERVED, DOCUMENTED, UNAVAILABLE and UNKNOWN remain distinct",
-      "Missing donor tool degrades explicitly",
-      "Every degradation includes a repair command where known"
+      "Destructive Git/filesystem/database and scope-explosion fixtures are blocked or require review",
+      "Safe reads remain allowed",
+      "Malformed classification never silently allows"
     ],
-    "id": "RS-W006",
-    "next_action": "Write and observe the failing capability/truth-source contract test before implementing deterministic probes.",
-    "objective": "Observe capabilities, truth-source class, readiness and degradation without inferring live state from documentation.",
-    "strongest_falsifier": "The system reports a capability as available solely because a document says it exists.",
-    "title": "Implement capability and truth-source observation"
+    "id": "RS-W007",
+    "next_action": "Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.",
+    "objective": "Fail closed on ruin-class operations using DCG/FCP-style mechanical enforcement before ordinary action selection.",
+    "strongest_falsifier": "An unclassified potentially catastrophic operation reaches execution as allowed.",
+    "title": "Implement RuinGuard adapter boundary"
   }
 }
