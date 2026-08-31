@@ -1,42 +1,78 @@
 {
   "blocked": [
     {
-      "depends_on": ["RS-W010", "RS-W012"],
+      "depends_on": [
+        "RS-W010",
+        "RS-W012"
+      ],
       "id": "RS-W013",
       "title": "Implement frontier-resolved WorkPacket lowering"
     },
     {
-      "depends_on": ["RS-W007", "RS-W010", "RS-W013"],
+      "depends_on": [
+        "RS-W007",
+        "RS-W010",
+        "RS-W013"
+      ],
       "id": "RS-W014",
       "title": "Implement external-effect reconciliation adapter"
     },
     {
-      "depends_on": ["RS-W011", "RS-W014"],
+      "depends_on": [
+        "RS-W011",
+        "RS-W014"
+      ],
       "id": "RS-W015",
       "title": "Implement procedural expertise compiler"
     },
     {
-      "depends_on": ["RS-W005", "RS-W009", "RS-W010", "RS-W011", "RS-W013"],
+      "depends_on": [
+        "RS-W005",
+        "RS-W009",
+        "RS-W010",
+        "RS-W011",
+        "RS-W013"
+      ],
       "id": "RS-W016",
       "title": "Implement novice expert-control surface"
     },
     {
-      "depends_on": ["RS-W006", "RS-W007", "RS-W008", "RS-W009", "RS-W010", "RS-W011", "RS-W012", "RS-W013", "RS-W014", "RS-W015", "RS-W016"],
+      "depends_on": [
+        "RS-W006",
+        "RS-W007",
+        "RS-W008",
+        "RS-W009",
+        "RS-W010",
+        "RS-W011",
+        "RS-W012",
+        "RS-W013",
+        "RS-W014",
+        "RS-W015",
+        "RS-W016"
+      ],
       "id": "RS-W017",
       "title": "Run adversarial expert-control benchmark"
     },
     {
-      "depends_on": ["RS-W001B"],
+      "depends_on": [
+        "RS-W001B"
+      ],
       "id": "RS-W002",
       "title": "Compile imported corpus into canonical current specs"
     },
     {
-      "depends_on": ["RS-W002", "RS-W013"],
+      "depends_on": [
+        "RS-W002",
+        "RS-W013"
+      ],
       "id": "RS-W003",
       "title": "Compile dependency-aware implementation work graph"
     },
     {
-      "depends_on": ["RS-W003", "RS-W017"],
+      "depends_on": [
+        "RS-W003",
+        "RS-W017"
+      ],
       "id": "RS-W004",
       "title": "Run matched cold-agent flywheel navigation benchmark"
     }
