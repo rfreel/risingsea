@@ -1,0 +1,29 @@
+{
+  "schema": "risingsea.work-receipt.v1",
+  "work_id": "RS-W010",
+  "title": "Repair Recipe and Verification Oracle Registry",
+  "status": "PASS",
+  "completed_at": "2026-08-31",
+  "authority": "verification_receipt",
+  "basis": {
+    "plan": "docs/superpowers/plans/2026-08-31-adversarial-diagnostic-residual-flywheel.md",
+    "spec": "specs/expert-domain-control-plane.md",
+    "red_ci_run": 33451149351,
+    "green_ci_run": 33451256377,
+    "green_commit": "8cd1f11952f1538d8f9572cf98fceaf33f2c56d2"
+  },
+  "verified": [
+    "every registered repair references an existing verification oracle",
+    "matching deterministic DEFECT selects only a candidate-only bounded recipe",
+    "UNKNOWN diagnostic cannot select a repair",
+    "unknown precondition blocks selection",
+    "false precondition blocks selection",
+    "repair write-set widening beyond allowed scope blocks selection",
+    "ruin-class recipe without exact required authority blocks selection",
+    "registry mutant missing verification oracle is rejected",
+    "all prior repository integrity gates remain green"
+  ],
+  "strongest_falsifier": "A repair can be selected without a matching accepted diagnostic, exact precondition truth, bounded write set, required authority, or an independently specified verification oracle.",
+  "result": "PASS",
+  "next": "RS-W011 unresolved discovery engine: preserve rival hypotheses, search exact prior cases first, and emit the cheapest safe discriminating witness without upgrading model/reviewer consensus to truth."
+}
