@@ -4,25 +4,22 @@
 
 ## Highest-value ready item
 
-**RS-W005 — Implement DomainMachine contract and registry validator**
+**RS-W006 — Implement capability and truth-source observation**
 
-Create the machine contract that encodes expert-native representations, diagnostics, repair/oracle routes, ruin boundaries and donors for each domain.
+Observe capabilities, truth-source class, readiness and degradation without inferring live state from documentation.
 
 Acceptance:
 
-- DomainMachine schema and registry exist
-- Three real domain machines validate: planning, external-effect, security
-- Every donor declares repository, mechanism, adoption mode and claim boundary
-- Every machine has an unresolved/discovery route
-- CI rejects duplicate IDs, missing machine files and incomplete donor contracts
+- OBSERVED, DOCUMENTED, UNAVAILABLE and UNKNOWN remain distinct
+- Missing donor tool degrades explicitly
+- Every degradation includes a repair command where known
 
-Strongest falsifier: A domain machine can validate while omitting the representation or route needed to handle an unresolved case.
+Strongest falsifier: The system reports a capability as available solely because a document says it exists.
 
-Next action: `Write and observe the failing domain-machine test before adding the registry and validator.`
+Next action: `Write and observe the failing capability/truth-source contract test before implementing deterministic probes.`
 
 ## Blocked
 
-- `RS-W006` — Implement capability and truth-source observation — blocked by: RS-W005
 - `RS-W007` — Implement RuinGuard adapter boundary — blocked by: RS-W005, RS-W006
 - `RS-W008` — Implement deterministic expert router — blocked by: RS-W005, RS-W006, RS-W007
 - `RS-W009` — Implement expert diagnostic compiler — blocked by: RS-W008
