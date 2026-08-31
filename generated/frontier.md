@@ -4,24 +4,22 @@
 
 ## Highest-value ready item
 
-**RS-W011 — Implement unresolved discovery engine**
+**RS-W012 — Implement obligation residual compiler**
 
-When normal repair cannot resolve a problem, preserve rivals and mechanically seek discriminating evidence instead of improvising.
+Partition obligations totally and disjointly, sending only UNSATISFIED obligations into executable TODO candidates.
 
 Acceptance:
 
-- Prior exact cases and exemplars are searched before new generation
-- At least two live rivals are preserved until evidence dominates
-- APR convergence does not upgrade truth
-- New distinctions can emit checker/rule/representation/recipe candidates
+- Partition is total and disjoint
+- Only UNSATISFIED enters TODO candidates
+- CONTRADICTED and UNKNOWN remain separate frontier classes
 
-Strongest falsifier: The discovery engine collapses an unresolved rival set to one answer without new evidence.
+Strongest falsifier: An UNKNOWN or contradicted obligation is emitted as an executable TODO.
 
-Next action: `Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.`
+Next action: `Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.`
 
 ## Blocked
 
-- `RS-W012` — Implement obligation residual compiler — blocked by: RS-W009, RS-W011
 - `RS-W013` — Implement frontier-resolved WorkPacket lowering — blocked by: RS-W010, RS-W012
 - `RS-W014` — Implement external-effect reconciliation adapter — blocked by: RS-W007, RS-W010, RS-W013
 - `RS-W015` — Implement procedural expertise compiler — blocked by: RS-W011, RS-W014
