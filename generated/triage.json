@@ -2,13 +2,6 @@
   "blocked": [
     {
       "depends_on": [
-        "RS-W005"
-      ],
-      "id": "RS-W006",
-      "title": "Implement capability and truth-source observation"
-    },
-    {
-      "depends_on": [
         "RS-W005",
         "RS-W006"
       ],
@@ -133,14 +126,14 @@
     }
   ],
   "counts": {
-    "blocked": 15,
-    "complete": 1,
+    "blocked": 14,
+    "complete": 2,
     "other": 0,
     "partial": 1,
     "ready": 2,
     "total": 19
   },
-  "next_command": "Write and observe the failing domain-machine test before adding the registry and validator.",
+  "next_command": "Write and observe the failing capability/truth-source contract test before implementing deterministic probes.",
   "partial": [
     {
       "id": "RS-W001",
@@ -151,10 +144,10 @@
   ],
   "ready": [
     {
-      "id": "RS-W005",
-      "next_action": "Write and observe the failing domain-machine test before adding the registry and validator.",
+      "id": "RS-W006",
+      "next_action": "Write and observe the failing capability/truth-source contract test before implementing deterministic probes.",
       "priority": 0,
-      "title": "Implement DomainMachine contract and registry validator"
+      "title": "Implement capability and truth-source observation"
     },
     {
       "id": "RS-W001B",
@@ -167,16 +160,14 @@
   "source": "work/items.jsonl",
   "top_ready": {
     "acceptance": [
-      "DomainMachine schema and registry exist",
-      "Three real domain machines validate: planning, external-effect, security",
-      "Every donor declares repository, mechanism, adoption mode and claim boundary",
-      "Every machine has an unresolved/discovery route",
-      "CI rejects duplicate IDs, missing machine files and incomplete donor contracts"
+      "OBSERVED, DOCUMENTED, UNAVAILABLE and UNKNOWN remain distinct",
+      "Missing donor tool degrades explicitly",
+      "Every degradation includes a repair command where known"
     ],
-    "id": "RS-W005",
-    "next_action": "Write and observe the failing domain-machine test before adding the registry and validator.",
-    "objective": "Create the machine contract that encodes expert-native representations, diagnostics, repair/oracle routes, ruin boundaries and donors for each domain.",
-    "strongest_falsifier": "A domain machine can validate while omitting the representation or route needed to handle an unresolved case.",
-    "title": "Implement DomainMachine contract and registry validator"
+    "id": "RS-W006",
+    "next_action": "Write and observe the failing capability/truth-source contract test before implementing deterministic probes.",
+    "objective": "Observe capabilities, truth-source class, readiness and degradation without inferring live state from documentation.",
+    "strongest_falsifier": "The system reports a capability as available solely because a document says it exists.",
+    "title": "Implement capability and truth-source observation"
   }
 }
