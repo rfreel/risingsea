@@ -61,7 +61,10 @@ def main() -> int:
         assert_keys(f"partial:{item.get('id')}", item, PARTIAL_KEYS)
 
     counts = payload["counts"]
-    if counts["total"] != counts["ready"] + counts["blocked"] + counts["complete"] + counts["partial"]:
+    expected_count_keys = {"total", "ready", "blocked", "complete", "partial", "other"}
+    if set(counts) != expected_count_keys:
+        raise AssertionError(f"unexpected count keys: {sorted(counts)}")
+    if counts["total"] != counts["ready"] + counts["blocked"] + counts["complete"] + counts["partial"] + counts["other"]:
         raise AssertionError(f"status partition does not cover current work graph: {counts}")
 
     forbidden = {"specs", "expected_accretion", "authority_ceiling"}
