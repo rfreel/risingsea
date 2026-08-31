@@ -2,10 +2,10 @@
   "counts": {
     "by_availability": {
       "REGISTERED_ONLY": 19,
-      "VENDORED": 13
+      "VENDORED": 14
     },
     "by_disposition": {
-      "CURRENT_SOURCE": 21,
+      "CURRENT_SOURCE": 22,
       "HISTORICAL_SOURCE": 8,
       "SUPERSEDED_SOURCE": 3
     },
@@ -13,15 +13,15 @@
       "artifact_bundle": 3,
       "handoff": 2,
       "machine_contract_or_receipt": 2,
-      "planning_document": 19,
+      "planning_document": 20,
       "verification_receipt": 4,
       "verification_report": 2
     },
-    "total": 32
+    "total": 33
   },
   "schema": "risingsea.source-inventory.v1",
   "source": "sources/registry.jsonl",
-  "source_git_blob": "a1df06f48983793089e34f799f8f3c1760d79389",
+  "source_git_blob": "4dac8d6f58feda53bd2cf82d28770a10de7209e9",
   "source_ids": [
     "SRC-001",
     "SRC-002",
@@ -54,6 +54,7 @@
     "SRC-029",
     "SRC-030",
     "SRC-031",
-    "SRC-032"
+    "SRC-032",
+    "SRC-033"
   ]
 }
