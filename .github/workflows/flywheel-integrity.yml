@@ -19,6 +19,8 @@ jobs:
         run: python tools/test_source_registry.py
       - name: Run source inventory contract
         run: python tools/test_source_inventory.py
+      - name: Validate compile-input retrieval progress
+        run: python tools/check_compile_inputs.py --json
       - name: Run read-only doctor
         run: python tools/doctor.py --json
       - name: Rebuild generated source inventory
