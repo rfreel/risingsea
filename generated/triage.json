@@ -2,29 +2,6 @@
   "blocked": [
     {
       "depends_on": [
-        "RS-W005",
-        "RS-W006",
-        "RS-W007"
-      ],
-      "id": "RS-W008",
-      "title": "Implement deterministic expert router"
-    },
-    {
-      "depends_on": [
-        "RS-W008"
-      ],
-      "id": "RS-W009",
-      "title": "Implement expert diagnostic compiler"
-    },
-    {
-      "depends_on": [
-        "RS-W009"
-      ],
-      "id": "RS-W010",
-      "title": "Implement repair recipe and verification-oracle registry"
-    },
-    {
-      "depends_on": [
         "RS-W008",
         "RS-W009",
         "RS-W010"
@@ -118,14 +95,14 @@
     }
   ],
   "counts": {
-    "blocked": 13,
-    "complete": 3,
+    "blocked": 10,
+    "complete": 7,
     "other": 0,
     "partial": 1,
     "ready": 2,
-    "total": 19
+    "total": 20
   },
-  "next_command": "Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.",
+  "next_command": "Write adversarial repair/oracle selection tests before implementing the repair registry and selector.",
   "partial": [
     {
       "id": "RS-W001",
@@ -136,10 +113,10 @@
   ],
   "ready": [
     {
-      "id": "RS-W007",
-      "next_action": "Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.",
+      "id": "RS-W010",
+      "next_action": "Write adversarial repair/oracle selection tests before implementing the repair registry and selector.",
       "priority": 0,
-      "title": "Implement RuinGuard adapter boundary"
+      "title": "Implement repair recipe and verification-oracle registry"
     },
     {
       "id": "RS-W001B",
@@ -149,17 +126,17 @@
     }
   ],
   "schema": "risingsea.triage.v2",
-  "source": "work/items.jsonl",
+  "source": "fold(work/items.jsonl, work/events.jsonl)",
   "top_ready": {
     "acceptance": [
-      "Destructive Git/filesystem/database and scope-explosion fixtures are blocked or require review",
-      "Safe reads remain allowed",
-      "Malformed classification never silently allows"
+      "Every recipe names an exact verification oracle",
+      "Unknown preconditions block recipe selection",
+      "Ruin class and authority are explicit"
     ],
-    "id": "RS-W007",
-    "next_action": "Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.",
-    "objective": "Fail closed on ruin-class operations using DCG/FCP-style mechanical enforcement before ordinary action selection.",
-    "strongest_falsifier": "An unclassified potentially catastrophic operation reaches execution as allowed.",
-    "title": "Implement RuinGuard adapter boundary"
+    "id": "RS-W010",
+    "next_action": "Write adversarial repair/oracle selection tests before implementing the repair registry and selector.",
+    "objective": "Represent expert repair as bounded transition contracts with exact preconditions, actions, oracles, falsifiers, recovery and authority.",
+    "strongest_falsifier": "A repair can be selected without a defined proof of completion.",
+    "title": "Implement repair recipe and verification-oracle registry"
   }
 }
