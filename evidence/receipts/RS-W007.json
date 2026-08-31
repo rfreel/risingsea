@@ -1,0 +1,24 @@
+{
+  "schema": "risingsea.work-receipt.v1",
+  "work_id": "RS-W007",
+  "verdict": "PASS",
+  "observed_ci_run": 33449727332,
+  "red_ci_run": 33449325019,
+  "witnesses": [
+    "git reset --hard is BLOCK",
+    "rm -rf is BLOCK",
+    "DROP TABLE is BLOCK",
+    "write-set expansion is REVIEW_REQUIRED with scope_explosion",
+    "malformed input is REVIEW_REQUIRED",
+    "git status, ls, and explicit read operations are ALLOW",
+    "all prior repository integrity gates remain green"
+  ],
+  "claim_boundary": "The local adapter proves the residual Rising Sea guard contract only. It does not claim full DCG rule-pack coverage or that DCG is installed in every execution environment.",
+  "artifacts": [
+    "tools/ruin_guard.py",
+    "guard/ruin-classes.json",
+    "contracts/ruin-class.schema.json",
+    "infrastructure/donors/destructive-command-guard.json",
+    "tools/test_ruin_guard.py"
+  ]
+}
