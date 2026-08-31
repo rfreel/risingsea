@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risingsea.unresolved.schema.v1",
+  "title": "Unresolved Problem",
+  "type": "object",
+  "required": ["unresolved_id", "problem_id", "state", "rivals", "exact_cases", "search_complete", "witness_candidates"],
+  "properties": {
+    "unresolved_id": {"type": "string", "minLength": 1},
+    "problem_id": {"type": "string", "minLength": 1},
+    "state": {"enum": ["UNKNOWN", "EVIDENCE_GAP", "CONTRADICTED"]},
+    "rivals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rival_id", "claim", "status"],
+        "properties": {
+          "rival_id": {"type": "string", "minLength": 1},
+          "claim": {"type": "string", "minLength": 1},
+          "status": {"enum": ["LIVE", "ELIMINATED"]}
+        },
+        "additionalProperties": true
+      }
+    },
+    "exact_cases": {"type": "array", "items": {"type": "object"}},
+    "search_complete": {"type": "boolean"},
+    "reviewer_consensus": {"type": ["object", "null"]},
+    "witness_candidates": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}
