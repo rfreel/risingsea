@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build deterministic flywheel triage projections from work/items.jsonl."""
+"""Build deterministic, compact flywheel triage projections from work/items.jsonl."""
 
 from __future__ import annotations
 
@@ -23,6 +23,45 @@ def load_items() -> list[dict]:
     return items
 
 
+def ready_projection(item: dict) -> dict:
+    return {
+        "id": item["id"],
+        "title": item["title"],
+        "priority": item.get("priority"),
+        "next_action": item.get("next_action"),
+    }
+
+
+def blocked_projection(item: dict) -> dict:
+    return {
+        "id": item["id"],
+        "title": item["title"],
+        "depends_on": item.get("depends_on", []),
+    }
+
+
+def partial_projection(item: dict) -> dict:
+    return {
+        "id": item["id"],
+        "title": item["title"],
+        "partial_reason": item.get("partial_reason"),
+        "next_action": item.get("next_action"),
+    }
+
+
+def top_projection(item: dict | None) -> dict | None:
+    if item is None:
+        return None
+    return {
+        "id": item["id"],
+        "title": item["title"],
+        "objective": item["objective"],
+        "acceptance": item.get("acceptance", []),
+        "strongest_falsifier": item.get("strongest_falsifier"),
+        "next_action": item.get("next_action"),
+    }
+
+
 def main() -> int:
     items = load_items()
     ready = sorted(
@@ -33,21 +72,30 @@ def main() -> int:
         (item for item in items if item.get("status") == "BLOCKED"),
         key=lambda item: (item.get("priority", 10**9), item["id"]),
     )
+    partial = sorted(
+        (item for item in items if item.get("status") == "PARTIAL"),
+        key=lambda item: (item.get("priority", 10**9), item["id"]),
+    )
     complete = [item for item in items if item.get("status") == "COMPLETE"]
+    classified = {"READY", "BLOCKED", "PARTIAL", "COMPLETE"}
+    other = [item for item in items if item.get("status") not in classified]
 
     top = ready[0] if ready else None
     triage = {
-        "schema": "risingsea.triage.v1",
+        "schema": "risingsea.triage.v2",
         "source": "work/items.jsonl",
         "counts": {
             "total": len(items),
             "ready": len(ready),
             "blocked": len(blocked),
+            "partial": len(partial),
             "complete": len(complete),
+            "other": len(other),
         },
-        "top_ready": top,
-        "ready": ready,
-        "blocked": blocked,
+        "top_ready": top_projection(top),
+        "ready": [ready_projection(item) for item in ready],
+        "blocked": [blocked_projection(item) for item in blocked],
+        "partial": [partial_projection(item) for item in partial],
         "next_command": top.get("next_action") if top else None,
     }
 
@@ -89,6 +137,13 @@ def main() -> int:
         for item in blocked:
             deps = ", ".join(item.get("depends_on", [])) or "none recorded"
             lines.append(f"- `{item['id']}` — {item['title']} — blocked by: {deps}")
+        lines.append("")
+
+    if partial:
+        lines.extend(["## Partial", ""])
+        for item in partial:
+            reason = item.get("partial_reason") or "partial state recorded"
+            lines.append(f"- `{item['id']}` — {item['title']} — {reason}")
         lines.append("")
 
     (OUT / "frontier.md").write_text("\n".join(lines), encoding="utf-8")
