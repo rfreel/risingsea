@@ -10,14 +10,14 @@
       ],
       "authority_ceiling": "candidate",
       "depends_on": [
-        "RS-W001"
+        "RS-W001B"
       ],
       "expected_accretion": [
         "Canonical spec set",
         "Supersession graph"
       ],
       "id": "RS-W002",
-      "next_action": "Blocked until RS-W001 completes.",
+      "next_action": "Blocked until RS-W001B completes.",
       "objective": "Reduce the imported corpus to one current semantic representation per durable concept while retaining citations and supersession links.",
       "priority": 2,
       "specs": [
@@ -82,65 +82,69 @@
     "blocked": 3,
     "complete": 1,
     "ready": 1,
-    "total": 5
+    "total": 6
   },
-  "next_command": "Create sources/registry.jsonl from the available planning artifacts and retain exact hashes.",
+  "next_command": "Vendor the current v2 semantic source set first, update source availability and repo_path, then mechanically identify any historical sources still required by RS-W002.",
   "ready": [
     {
       "acceptance": [
-        "Every imported source has path or URI, SHA-256, source kind, and disposition",
-        "Current and historical planning artifacts remain distinguishable",
-        "No source is silently rewritten during import",
-        "A source inventory can be regenerated deterministically"
+        "No source needed by RS-W002 remains REGISTERED_ONLY",
+        "Every VENDORED source rehashes to the registry SHA-256",
+        "Every EXTERNAL source has a stable independently retrievable URI and anchored digest",
+        "Large bundle sources may be represented by retrieval-complete constituent artifacts rather than duplicated archives when the mapping is explicit",
+        "A fresh GitHub-only agent can obtain every source required to compile current specs"
       ],
       "authority_ceiling": "candidate",
+      "continues": "RS-W001",
       "depends_on": [
         "RS-W000"
       ],
       "expected_accretion": [
-        "Source registry",
-        "Migration map",
-        "Duplicate and supersession candidates"
+        "Self-contained source corpus",
+        "Retrieval-completeness checker",
+        "Stable source-to-vendored mapping"
       ],
-      "id": "RS-W001",
-      "next_action": "Create sources/registry.jsonl from the available planning artifacts and retain exact hashes.",
-      "objective": "Ingest the existing Rising Sea planning artifacts as immutable source material without turning historical documents into current authority.",
+      "id": "RS-W001B",
+      "next_action": "Vendor the current v2 semantic source set first, update source availability and repo_path, then mechanically identify any historical sources still required by RS-W002.",
+      "objective": "Ensure every source needed for canonical-spec compilation is either vendored byte-for-byte in the repository or points to a stable independently retrievable external object with an anchored digest.",
       "priority": 1,
       "specs": [
         "specs/current-system.md"
       ],
       "status": "READY",
-      "strongest_falsifier": "An imported document cannot be traced back to its exact original bytes or external reference.",
-      "title": "Import complete Rising Sea planning corpus with provenance"
+      "strongest_falsifier": "A source required by RS-W002 can only be recovered from prior chat context or an unavailable transient artifact URI.",
+      "title": "Make registered Rising Sea corpus retrieval-complete"
     }
   ],
   "schema": "risingsea.triage.v1",
   "source": "work/items.jsonl",
   "top_ready": {
     "acceptance": [
-      "Every imported source has path or URI, SHA-256, source kind, and disposition",
-      "Current and historical planning artifacts remain distinguishable",
-      "No source is silently rewritten during import",
-      "A source inventory can be regenerated deterministically"
+      "No source needed by RS-W002 remains REGISTERED_ONLY",
+      "Every VENDORED source rehashes to the registry SHA-256",
+      "Every EXTERNAL source has a stable independently retrievable URI and anchored digest",
+      "Large bundle sources may be represented by retrieval-complete constituent artifacts rather than duplicated archives when the mapping is explicit",
+      "A fresh GitHub-only agent can obtain every source required to compile current specs"
     ],
     "authority_ceiling": "candidate",
+    "continues": "RS-W001",
     "depends_on": [
       "RS-W000"
     ],
     "expected_accretion": [
-      "Source registry",
-      "Migration map",
-      "Duplicate and supersession candidates"
+      "Self-contained source corpus",
+      "Retrieval-completeness checker",
+      "Stable source-to-vendored mapping"
     ],
-    "id": "RS-W001",
-    "next_action": "Create sources/registry.jsonl from the available planning artifacts and retain exact hashes.",
-    "objective": "Ingest the existing Rising Sea planning artifacts as immutable source material without turning historical documents into current authority.",
+    "id": "RS-W001B",
+    "next_action": "Vendor the current v2 semantic source set first, update source availability and repo_path, then mechanically identify any historical sources still required by RS-W002.",
+    "objective": "Ensure every source needed for canonical-spec compilation is either vendored byte-for-byte in the repository or points to a stable independently retrievable external object with an anchored digest.",
     "priority": 1,
     "specs": [
       "specs/current-system.md"
     ],
     "status": "READY",
-    "strongest_falsifier": "An imported document cannot be traced back to its exact original bytes or external reference.",
-    "title": "Import complete Rising Sea planning corpus with provenance"
+    "strongest_falsifier": "A source required by RS-W002 can only be recovered from prior chat context or an unavailable transient artifact URI.",
+    "title": "Make registered Rising Sea corpus retrieval-complete"
   }
 }
