@@ -1,0 +1,74 @@
+{
+  "closure_rule": "RS-W002 remains blocked until every base_system_layer planned source is VENDORED and rehashes to its expected SHA-256; aggregate ZIP and combined-spec rows may remain REGISTERED_ONLY when their required semantic constituents are vendored.",
+  "consumer": "RS-W002",
+  "counts": {
+    "agent_vendored": 13,
+    "base_bytes": 1241752,
+    "base_missing": 37
+  },
+  "groups": {
+    "agent_centric_layer": {
+      "source_ids": [
+        "SRC-020",
+        "SRC-021",
+        "SRC-022",
+        "SRC-023",
+        "SRC-024",
+        "SRC-025",
+        "SRC-026",
+        "SRC-027",
+        "SRC-028",
+        "SRC-029",
+        "SRC-030",
+        "SRC-031",
+        "SRC-032"
+      ],
+      "status": "VENDORED"
+    },
+    "base_system_layer": {
+      "planned_sources": [
+        {"availability":"MISSING","bytes":12624,"planned_source_id":"SRC-033","relative_path":"00-governance/00-system-authority-and-truth-model.md","repo_path":"sources/vendored/v2/base/00-governance/00-system-authority-and-truth-model.md","sha256":"040eae53745184385c9782ab136ddc09d6e27ee03ebc8e104f5fc4aafe9e576b"},
+        {"availability":"MISSING","bytes":8336,"planned_source_id":"SRC-034","relative_path":"00-governance/01-cross-slice-protocol.md","repo_path":"sources/vendored/v2/base/00-governance/01-cross-slice-protocol.md","sha256":"5b0334baf7cbd7c865803b2f94b34ecb5666792acbadf9ebbfbd20d09ec23cff"},
+        {"availability":"MISSING","bytes":5507,"planned_source_id":"SRC-035","relative_path":"00-governance/02-determinism-replay-cache-and-invalidation.md","repo_path":"sources/vendored/v2/base/00-governance/02-determinism-replay-cache-and-invalidation.md","sha256":"20320b76d592bc45b65cbbe34c5fc525ebba4780bc22756bae81d14baffaba95"},
+        {"availability":"MISSING","bytes":6422,"planned_source_id":"SRC-036","relative_path":"00-governance/03-security-and-trust-boundaries.md","repo_path":"sources/vendored/v2/base/00-governance/03-security-and-trust-boundaries.md","sha256":"63cc4baf9d866981d45792a4c8dd5924c757e2a4a548cfcdb8d7edc6845790f7"},
+        {"availability":"MISSING","bytes":4343,"planned_source_id":"SRC-037","relative_path":"00-governance/04-versioning-migration-and-compatibility.md","repo_path":"sources/vendored/v2/base/00-governance/04-versioning-migration-and-compatibility.md","sha256":"30c406a6c52ab152f00f81ccbb17a74b6ecdb030d957a2ae224184d03a76f777"},
+        {"availability":"MISSING","bytes":4538,"planned_source_id":"SRC-038","relative_path":"00-governance/05-error-adjudication-and-recovery.md","repo_path":"sources/vendored/v2/base/00-governance/05-error-adjudication-and-recovery.md","sha256":"945ba1f087da0cfc9291b06cf3d77cfda489144b33096dc87f61752b0498d8aa"},
+        {"availability":"MISSING","bytes":7089,"planned_source_id":"SRC-039","relative_path":"00-governance/06-implementation-sequence-and-dependencies.md","repo_path":"sources/vendored/v2/base/00-governance/06-implementation-sequence-and-dependencies.md","sha256":"a4e299764666942f8cc4356b2127c1eeed6bb7a8e914ff675a7cefd9ab4922f3"},
+        {"availability":"MISSING","bytes":6490,"planned_source_id":"SRC-040","relative_path":"00-governance/07-acceptance-criteria-and-claim-test-matrix.md","repo_path":"sources/vendored/v2/base/00-governance/07-acceptance-criteria-and-claim-test-matrix.md","sha256":"85efcdd07490d80e8bdb23a6c1cf0684ff031f586e366bc4e97bb6e2694df2fd"},
+        {"availability":"MISSING","bytes":4262,"planned_source_id":"SRC-041","relative_path":"00-governance/08-open-decisions-and-preserved-rivals.md","repo_path":"sources/vendored/v2/base/00-governance/08-open-decisions-and-preserved-rivals.md","sha256":"cd363ad9330a179c48f7981e6cf37cefae1c3f2533259b6b88981c1333ff659a"},
+        {"availability":"MISSING","bytes":4436,"planned_source_id":"SRC-042","relative_path":"00-governance/09-glossary.md","repo_path":"sources/vendored/v2/base/00-governance/09-glossary.md","sha256":"a3dea73002d7aacbf0db129e5ee70b61354cbfcf4aa45e1f9c95d40532ded512"},
+        {"availability":"MISSING","bytes":42803,"planned_source_id":"SRC-043","relative_path":"01-vertical-slices/01-ct-canonical-append-only-decision-history.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/01-ct-canonical-append-only-decision-history.md","sha256":"0c74810e23d3d9fbb8f8099596025a7dfbb3f4ecd4d24be68953f2024597ca4e"},
+        {"availability":"MISSING","bytes":44861,"planned_source_id":"SRC-044","relative_path":"01-vertical-slices/02-prov-provenance-and-verification-receipts.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/02-prov-provenance-and-verification-receipts.md","sha256":"64e0b24a73eb80211fc7d9fa08f1390e1ce6b25651895a1a6bf6674048867aa2"},
+        {"availability":"MISSING","bytes":40921,"planned_source_id":"SRC-045","relative_path":"01-vertical-slices/03-shacl-immutable-rdf-shape-validation.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/03-shacl-immutable-rdf-shape-validation.md","sha256":"0d866f50004ee36688476c3dfb391801f803b8e6413710585235e9778bb56e54"},
+        {"availability":"MISSING","bytes":39769,"planned_source_id":"SRC-046","relative_path":"01-vertical-slices/04-spiffe-workload-identity-and-executor-attestation.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/04-spiffe-workload-identity-and-executor-attestation.md","sha256":"fac55bc21a886b2ce12658e4d7dfec799780e23c396f74bccb2b0e2a66f32dcc"},
+        {"availability":"MISSING","bytes":41035,"planned_source_id":"SRC-047","relative_path":"01-vertical-slices/05-sqlite-atomic-local-event-admission-and-rebuildable-materialization.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/05-sqlite-atomic-local-event-admission-and-rebuildable-materialization.md","sha256":"2669bdb5bc381199942663cc75abb370b792499feb0250b1e3884ddeed7e8373"},
+        {"availability":"MISSING","bytes":40210,"planned_source_id":"SRC-048","relative_path":"01-vertical-slices/06-verify-static-candidate-admissibility.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/06-verify-static-candidate-admissibility.md","sha256":"daf6325ae5e108a1f64382b14024c63931b96e586d3860ac8f77e9539e3de601"},
+        {"availability":"MISSING","bytes":43319,"planned_source_id":"SRC-049","relative_path":"01-vertical-slices/07-compiler-typed-primitive-intermediate-representation-and-canonical-lowering.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/07-compiler-typed-primitive-intermediate-representation-and-canonical-lowering.md","sha256":"d692ca0db8dcfa8ecb5c5c418e7b5ce5f094f5bb5df4b58316158570ed29c5de"},
+        {"availability":"MISSING","bytes":40641,"planned_source_id":"SRC-050","relative_path":"01-vertical-slices/08-jcs-canonical-json-commitments-digests-and-stale-write-preconditions.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/08-jcs-canonical-json-commitments-digests-and-stale-write-preconditions.md","sha256":"4514cd7dc82a297f3010cb5bca93a193ec9a1bf22a1633a1a813bc2c625d572f"},
+        {"availability":"MISSING","bytes":40007,"planned_source_id":"SRC-051","relative_path":"01-vertical-slices/09-mlshadow-shadow-evaluation-canary-evidence-and-rollback.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/09-mlshadow-shadow-evaluation-canary-evidence-and-rollback.md","sha256":"f97c3975c310b6b75e7c3a189319ef6b2edffde725a3e85998bdfe4200d99a88"},
+        {"availability":"MISSING","bytes":38567,"planned_source_id":"SRC-052","relative_path":"01-vertical-slices/10-fsm-finite-semantic-languages-tries-and-automata.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/10-fsm-finite-semantic-languages-tries-and-automata.md","sha256":"af67beb9a1d3c897e9b3ef6f70974829551aecfb99a0a95613e4dfe61366ce9f"},
+        {"availability":"MISSING","bytes":39776,"planned_source_id":"SRC-053","relative_path":"01-vertical-slices/11-bazel-dependency-directed-reuse-and-invalidation.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/11-bazel-dependency-directed-reuse-and-invalidation.md","sha256":"e4e91ba5893d910d34b2f8331b90203ae3fae8bf2bb80f25419cdc666038705c"},
+        {"availability":"MISSING","bytes":43364,"planned_source_id":"SRC-054","relative_path":"01-vertical-slices/12-datalog-mechanical-closure-derivation-witnesses-and-projection-folding.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/12-datalog-mechanical-closure-derivation-witnesses-and-projection-folding.md","sha256":"4a7c228bbf5e1a79d24db8e024d6a2441ecd858410cfd979de722d8a705d8743"},
+        {"availability":"MISSING","bytes":42520,"planned_source_id":"SRC-055","relative_path":"01-vertical-slices/13-opa-declarative-admission-policy-and-exact-operation-authorization.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/13-opa-declarative-admission-policy-and-exact-operation-authorization.md","sha256":"b51d8184b362944b92ec81709f0bc04b4dfa31bf98d1df9f5b291d34f9793187"},
+        {"availability":"MISSING","bytes":42591,"planned_source_id":"SRC-056","relative_path":"01-vertical-slices/14-tla-state-machine-invariants-bounded-exploration-and-counterexample-receipts.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/14-tla-state-machine-invariants-bounded-exploration-and-counterexample-receipts.md","sha256":"e77ed077b0124297fd7da8b9257592f7567c312ce2ed733cba86f61fe90137ef"},
+        {"availability":"MISSING","bytes":38680,"planned_source_id":"SRC-057","relative_path":"01-vertical-slices/15-rdfc-canonical-rdf-dataset-identity-and-delta-commitment.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/15-rdfc-canonical-rdf-dataset-identity-and-delta-commitment.md","sha256":"b840ac10fda00fcbc34022bc45b5bf40162b41441644e0c73d14daa3d2a52ae4"},
+        {"availability":"MISSING","bytes":49629,"planned_source_id":"SRC-058","relative_path":"01-vertical-slices/16-test-behavioral-conformance-replay-mutation-and-counterexample-production.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/16-test-behavioral-conformance-replay-mutation-and-counterexample-production.md","sha256":"22b6aaf466f607010f99d1dab29b15e5c1b72df529d920f732a5cc34020d53b3"},
+        {"availability":"MISSING","bytes":48933,"planned_source_id":"SRC-059","relative_path":"01-vertical-slices/17-effect-external-effect-intent-idempotent-attempt-observation-and-reconciliation.md","repo_path":"sources/vendored/v2/base/01-vertical-slices/17-effect-external-effect-intent-idempotent-attempt-observation-and-reconciliation.md","sha256":"a0c5648fd4b6367aa7d0b17ddd09974c650bca3843ed9a5c72530d9cd8490755"},
+        {"availability":"MISSING","bytes":44448,"planned_source_id":"SRC-060","relative_path":"02-native-operators/18-semir-typed-semantic-proposition-and-scope-intermediate-representation.md","repo_path":"sources/vendored/v2/base/02-native-operators/18-semir-typed-semantic-proposition-and-scope-intermediate-representation.md","sha256":"abaee40c590e25f2073032ab9abfc3be046b4a1c80cdad589ea643efad96af5b"},
+        {"availability":"MISSING","bytes":42446,"planned_source_id":"SRC-061","relative_path":"02-native-operators/19-router-deterministic-lookup-precedence-candidate-routing-and-miss-handling.md","repo_path":"sources/vendored/v2/base/02-native-operators/19-router-deterministic-lookup-precedence-candidate-routing-and-miss-handling.md","sha256":"225b9d74e109cef59a5a852e5b90621a559c06bf048775e255ce51e85a3df338"},
+        {"availability":"MISSING","bytes":46060,"planned_source_id":"SRC-062","relative_path":"02-native-operators/20-residualize-finite-obligation-partition-and-minimum-generative-residual.md","repo_path":"sources/vendored/v2/base/02-native-operators/20-residualize-finite-obligation-partition-and-minimum-generative-residual.md","sha256":"55e47426e1802139b63f487143440f29afff086004e9aa26adbaad8e1945323c"},
+        {"availability":"MISSING","bytes":46575,"planned_source_id":"SRC-063","relative_path":"02-native-operators/21-distinguish-minimum-decisive-observation-and-indistinguishability-witness.md","repo_path":"sources/vendored/v2/base/02-native-operators/21-distinguish-minimum-decisive-observation-and-indistinguishability-witness.md","sha256":"d39cf090a35c25a3e5ea8f155b006ff06c388a4585bdec0604ed5be9b65fb1ff"},
+        {"availability":"MISSING","bytes":53061,"planned_source_id":"SRC-064","relative_path":"02-native-operators/22-primitive-primitive-lifecycle-promotion-confidence-invalidation-and-retirement.md","repo_path":"sources/vendored/v2/base/02-native-operators/22-primitive-primitive-lifecycle-promotion-confidence-invalidation-and-retirement.md","sha256":"ff953e9945059358091976155f8e2087303521e212e4752c201353c95710533d"},
+        {"availability":"MISSING","bytes":167301,"planned_source_id":"SRC-065","relative_path":"04-traceability/corrected-spo-registry.json","repo_path":"sources/vendored/v2/base/04-traceability/corrected-spo-registry.json","sha256":"8ad09730d4c4cda3bd0e07161f6bfecfb710b70f285329e2d9bb47580ea64b55"},
+        {"availability":"MISSING","bytes":18902,"planned_source_id":"SRC-066","relative_path":"04-traceability/corrected-spo-registry.md","repo_path":"sources/vendored/v2/base/04-traceability/corrected-spo-registry.md","sha256":"95f00391a3e3fbcb336a781b3f504455ed083c5a561f446e11abd8132ac9501b"},
+        {"availability":"MISSING","bytes":29693,"planned_source_id":"SRC-067","relative_path":"04-traceability/repair-ledger.md","repo_path":"sources/vendored/v2/base/04-traceability/repair-ledger.md","sha256":"8b8b91e2a9a492e5cfd92f6a5b57344f2fb3008fd5bbae41ee373e304ca9da30"},
+        {"availability":"MISSING","bytes":2828,"planned_source_id":"SRC-068","relative_path":"04-traceability/slice-coverage-matrix.md","repo_path":"sources/vendored/v2/base/04-traceability/slice-coverage-matrix.md","sha256":"ab387070bf3e69826ae39d6da3c97e08fcdc4125110e4519d580fe560ce1445a"},
+        {"availability":"MISSING","bytes":8765,"planned_source_id":"SRC-069","relative_path":"README.md","repo_path":"sources/vendored/v2/base/README.md","sha256":"8ead33ebf885c523ffe984f98305c73cbe6ac216b734473cffab90c9aebdd27b"}
+      ],
+      "status": "MISSING"
+    }
+  },
+  "purpose": "Minimum retrieval-complete semantic source closure required before canonical current specs may be compiled.",
+  "schema": "risingsea.compile-inputs.v1",
+  "work_id": "RS-W001B"
+}
