@@ -20,15 +20,20 @@ def load_rows() -> list[dict]:
     ]
 
 
+def git_blob_id(payload: bytes) -> str:
+    header = f"blob {len(payload)}\0".encode("ascii")
+    return hashlib.sha1(header + payload).hexdigest()
+
+
 def main() -> int:
     assert INVENTORY.exists(), "generated/source-inventory.json must exist"
     rows = load_rows()
     observed = json.loads(INVENTORY.read_text(encoding="utf-8"))
-    expected_digest = hashlib.sha256(REGISTRY.read_bytes()).hexdigest()
+    expected_blob = git_blob_id(REGISTRY.read_bytes())
 
     assert observed["schema"] == "risingsea.source-inventory.v1"
     assert observed["source"] == "sources/registry.jsonl"
-    assert observed["source_digest"] == expected_digest
+    assert observed["source_git_blob"] == expected_blob
     assert observed["counts"]["total"] == len(rows)
     assert sum(observed["counts"]["by_disposition"].values()) == len(rows)
     assert sum(observed["counts"]["by_availability"].values()) == len(rows)
