@@ -1,0 +1,58 @@
+{
+  "schema": "risingsea.receipt.v1",
+  "work_id": "RS-W001",
+  "claim_status": "PARTIAL",
+  "observed_outputs": [
+    "sources/registry.jsonl",
+    "generated/source-inventory.json",
+    "tools/test_source_registry.py",
+    "tools/test_source_inventory.py",
+    "tools/build_source_inventory.py"
+  ],
+  "verification": {
+    "workflow_run_id": 33442864969,
+    "workflow_conclusion": "success",
+    "observed_checks": [
+      "source registry contract passed",
+      "source inventory contract passed",
+      "read-only doctor passed",
+      "source inventory regeneration passed",
+      "frontier regeneration passed",
+      "generated projections had zero diff"
+    ],
+    "registered_sources": 19,
+    "availability": {
+      "REGISTERED_ONLY": 19
+    },
+    "disposition": {
+      "CURRENT_SOURCE": 8,
+      "HISTORICAL_SOURCE": 8,
+      "SUPERSEDED_SOURCE": 3
+    }
+  },
+  "passed_obligations": [
+    "Every registered source has origin, SHA-256, source kind, disposition, byte count, and availability.",
+    "Current, historical, and superseded source dispositions are mechanically distinct.",
+    "The source inventory is a deterministic projection bound to the registry Git blob identity.",
+    "No source bytes were rewritten during registration."
+  ],
+  "unresolved_obligations": [
+    "All 19 sources remain REGISTERED_ONLY.",
+    "chatgpt-artifact:// origins are not independently retrievable by a fresh GitHub-only agent.",
+    "Downstream canonical-spec compilation must not assume source byte availability until RS-W001B closes."
+  ],
+  "strongest_falsifier": "A source required for downstream compilation is unavailable outside prior chat context.",
+  "adjudication": "PARTIAL",
+  "continuation": "RS-W001B",
+  "accretion_delta": {
+    "new_tests": [
+      "tools/test_source_registry.py",
+      "tools/test_source_inventory.py"
+    ],
+    "new_compilers": [
+      "tools/build_source_inventory.py"
+    ],
+    "new_distinction": "REGISTERED_ONLY is not VENDORED or independently retrievable.",
+    "new_guardrail": "Do not unblock canonical-spec compilation from hash registration alone."
+  }
+}
