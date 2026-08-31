@@ -4,3 +4,5 @@
 {"seq":4,"event_id":"WE-0004","type":"DEPENDENCY_ADDED","item_id":"RS-W009","dependency":"RS-W009A"}
 {"seq":5,"event_id":"WE-0005","type":"ITEM_STATUS_SET","item_id":"RS-W009","status":"COMPLETE","receipt":"evidence/receipts/RS-W009.json"}
 {"seq":6,"event_id":"WE-0006","type":"ITEM_STATUS_SET","item_id":"RS-W010","status":"READY","next_action":"Write adversarial repair/oracle selection tests before implementing the repair registry and selector."}
+{"seq":7,"event_id":"WE-0007","type":"ITEM_STATUS_SET","item_id":"RS-W010","status":"COMPLETE","receipt":"evidence/receipts/RS-W010.json"}
+{"seq":8,"event_id":"WE-0008","type":"ITEM_STATUS_SET","item_id":"RS-W011","status":"READY","next_action":"Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard."}
