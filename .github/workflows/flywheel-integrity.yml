@@ -31,6 +31,8 @@ jobs:
         run: python tools/test_expert_router.py
       - name: Run accepted observation algebra contract
         run: python tools/test_observation_algebra.py
+      - name: Run deterministic diagnostic compiler contract
+        run: python tools/test_diagnostic_compiler.py
       - name: Run compact frontier contract
         run: python tools/test_frontier_projection.py
       - name: Run read-only doctor
