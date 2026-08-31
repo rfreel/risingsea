@@ -35,6 +35,8 @@ jobs:
         run: python tools/test_diagnostic_compiler.py
       - name: Run append-only work event fold contract
         run: python tools/test_work_event_fold.py
+      - name: Run repair recipe and oracle contract
+        run: python tools/test_repairs.py
       - name: Run compact frontier contract
         run: python tools/test_frontier_projection.py
       - name: Run read-only doctor
