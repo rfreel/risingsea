@@ -1,0 +1,146 @@
+{
+  "blocked": [
+    {
+      "acceptance": [
+        "One canonical current representation per durable concept",
+        "Historical sources remain recoverable",
+        "Conflicting claims are explicit",
+        "UNKNOWN is preserved",
+        "Canonical specs cite source IDs"
+      ],
+      "authority_ceiling": "candidate",
+      "depends_on": [
+        "RS-W001"
+      ],
+      "expected_accretion": [
+        "Canonical spec set",
+        "Supersession graph"
+      ],
+      "id": "RS-W002",
+      "next_action": "Blocked until RS-W001 completes.",
+      "objective": "Reduce the imported corpus to one current semantic representation per durable concept while retaining citations and supersession links.",
+      "priority": 2,
+      "specs": [
+        "specs/current-system.md"
+      ],
+      "status": "BLOCKED",
+      "strongest_falsifier": "Two current pages independently claim authority over the same semantic object without an explicit relationship.",
+      "title": "Compile imported corpus into canonical current specs"
+    },
+    {
+      "acceptance": [
+        "Workers do not need the original corpus",
+        "Dependency graph is acyclic or cycles are explicit failures",
+        "Every ready packet has testable acceptance criteria",
+        "Critical path and blockers are mechanically derivable"
+      ],
+      "authority_ceiling": "candidate",
+      "depends_on": [
+        "RS-W002"
+      ],
+      "expected_accretion": [
+        "Implementation work DAG"
+      ],
+      "id": "RS-W003",
+      "next_action": "Blocked until RS-W002 completes.",
+      "objective": "Turn canonical specs into self-contained implementation packets with explicit dependencies, witnesses, falsifiers, and acceptance criteria.",
+      "priority": 3,
+      "specs": [
+        "specs/current-system.md"
+      ],
+      "status": "BLOCKED",
+      "strongest_falsifier": "A worker must infer a hidden dependency or reread historical planning prose to execute a packet.",
+      "title": "Compile dependency-aware implementation work graph"
+    },
+    {
+      "acceptance": [
+        "Matched tasks use fixed success criteria",
+        "Pages read, tokens, errors, time-to-next-action, and recovery are measured separately",
+        "No scalar winner is asserted without explicit weights"
+      ],
+      "authority_ceiling": "validation",
+      "depends_on": [
+        "RS-W003"
+      ],
+      "expected_accretion": [
+        "Measured agent-experience evidence",
+        "Information architecture repair candidates"
+      ],
+      "id": "RS-W004",
+      "next_action": "Blocked until a real work graph exists.",
+      "objective": "Measure whether the repository actually reduces context, navigation, recovery, and decision cost rather than assuming ergonomics from design.",
+      "priority": 4,
+      "specs": [
+        "specs/current-system.md"
+      ],
+      "status": "BLOCKED",
+      "strongest_falsifier": "The flywheel surface consumes equal or greater resources without improving correctness or recoverability.",
+      "title": "Run matched cold-agent flywheel navigation benchmark"
+    }
+  ],
+  "counts": {
+    "blocked": 3,
+    "complete": 1,
+    "ready": 1,
+    "total": 5
+  },
+  "next_command": "Create sources/registry.jsonl from the available planning artifacts and retain exact hashes.",
+  "ready": [
+    {
+      "acceptance": [
+        "Every imported source has path or URI, SHA-256, source kind, and disposition",
+        "Current and historical planning artifacts remain distinguishable",
+        "No source is silently rewritten during import",
+        "A source inventory can be regenerated deterministically"
+      ],
+      "authority_ceiling": "candidate",
+      "depends_on": [
+        "RS-W000"
+      ],
+      "expected_accretion": [
+        "Source registry",
+        "Migration map",
+        "Duplicate and supersession candidates"
+      ],
+      "id": "RS-W001",
+      "next_action": "Create sources/registry.jsonl from the available planning artifacts and retain exact hashes.",
+      "objective": "Ingest the existing Rising Sea planning artifacts as immutable source material without turning historical documents into current authority.",
+      "priority": 1,
+      "specs": [
+        "specs/current-system.md"
+      ],
+      "status": "READY",
+      "strongest_falsifier": "An imported document cannot be traced back to its exact original bytes or external reference.",
+      "title": "Import complete Rising Sea planning corpus with provenance"
+    }
+  ],
+  "schema": "risingsea.triage.v1",
+  "source": "work/items.jsonl",
+  "top_ready": {
+    "acceptance": [
+      "Every imported source has path or URI, SHA-256, source kind, and disposition",
+      "Current and historical planning artifacts remain distinguishable",
+      "No source is silently rewritten during import",
+      "A source inventory can be regenerated deterministically"
+    ],
+    "authority_ceiling": "candidate",
+    "depends_on": [
+      "RS-W000"
+    ],
+    "expected_accretion": [
+      "Source registry",
+      "Migration map",
+      "Duplicate and supersession candidates"
+    ],
+    "id": "RS-W001",
+    "next_action": "Create sources/registry.jsonl from the available planning artifacts and retain exact hashes.",
+    "objective": "Ingest the existing Rising Sea planning artifacts as immutable source material without turning historical documents into current authority.",
+    "priority": 1,
+    "specs": [
+      "specs/current-system.md"
+    ],
+    "status": "READY",
+    "strongest_falsifier": "An imported document cannot be traced back to its exact original bytes or external reference.",
+    "title": "Import complete Rising Sea planning corpus with provenance"
+  }
+}
