@@ -1,0 +1,157 @@
+{
+  "schema": "risingsea.domain-machine.v1",
+  "domain_id": "security",
+  "title": "Security, Authority and Ruin Prevention",
+  "representation": {
+    "kind": "principal_capability_trust_boundary_effect_graph",
+    "fields": [
+      "principals",
+      "identities",
+      "capabilities",
+      "zones",
+      "policies",
+      "assets",
+      "trust_boundaries",
+      "candidate_effects",
+      "ruin_classes",
+      "approvals"
+    ],
+    "novice_projection": [
+      "Problem",
+      "Why it matters",
+      "Known",
+      "Missing",
+      "Do not",
+      "Next",
+      "Proof of completion",
+      "If unresolved"
+    ]
+  },
+  "required_observations": [
+    "current identity evidence",
+    "current policy decision",
+    "exact capability or authority binding",
+    "candidate operation target and effect",
+    "ruin classification",
+    "fresh approval when required"
+  ],
+  "invariants": [
+    {
+      "id": "SEC-INV-001",
+      "statement": "Identity evidence is not authorization."
+    },
+    {
+      "id": "SEC-INV-002",
+      "statement": "A capability not explicitly granted is denied."
+    },
+    {
+      "id": "SEC-INV-003",
+      "statement": "Ruin-class actions fail closed when classification, authority or required approval is missing."
+    },
+    {
+      "id": "SEC-INV-004",
+      "statement": "Approval binds to the exact action/effect and becomes stale when material inputs change."
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "SEC-DIAG-001",
+      "kind": "CAPABILITY_CHECK",
+      "mechanism": "deterministically compare requested operation to explicit granted capability and policy",
+      "outcomes": ["SATISFIED", "DEFECT", "BLOCKED"]
+    },
+    {
+      "id": "SEC-DIAG-002",
+      "kind": "RUIN_RULE_CHECK",
+      "mechanism": "evaluate candidate command/effect against deterministic destructive-operation packs and Rising Sea ruin rules",
+      "outcomes": ["SATISFIED", "DEFECT", "EVIDENCE_GAP"]
+    },
+    {
+      "id": "SEC-DIAG-003",
+      "kind": "MODEL_CANDIDATE",
+      "mechanism": "candidate classification only for residual semantics not covered by deterministic security mechanisms",
+      "outcomes": ["UNKNOWN"]
+    }
+  ],
+  "repair_recipes": [
+    "security.request-exact-authority",
+    "security.choose-safe-alternative",
+    "security.reduce-blast-radius",
+    "security.bind-exact-approval"
+  ],
+  "verification_oracles": [
+    {
+      "id": "SEC-ORACLE-001",
+      "kind": "policy_capability_contract",
+      "condition": "operation is impossible without the required explicit capability/policy state"
+    },
+    {
+      "id": "SEC-ORACLE-002",
+      "kind": "negative_fixture",
+      "condition": "known destructive fixtures are denied while ordinary safe reads remain allowed"
+    }
+  ],
+  "ruin_boundaries": [
+    {
+      "id": "SEC-RUIN-001",
+      "class": "irreversible_data_loss",
+      "guard": "Block destructive filesystem, Git and database operations unless a specific reviewed route permits them."
+    },
+    {
+      "id": "SEC-RUIN-002",
+      "class": "credential_exposure",
+      "guard": "Raw credentials are not exposed to untrusted execution surfaces."
+    },
+    {
+      "id": "SEC-RUIN-003",
+      "class": "privilege_escalation",
+      "guard": "No ambient authority; elevated action requires explicit bounded capability."
+    },
+    {
+      "id": "SEC-RUIN-004",
+      "class": "scope_explosion",
+      "guard": "An action may not widen target, recipient, amount, location or write set without re-authorization."
+    }
+  ],
+  "failure_routes": {
+    "MISSING_AUTHORITY": {
+      "action": "BLOCK and return the exact authority/capability required."
+    },
+    "RUIN_CLASS": {
+      "action": "BLOCK or REVIEW_REQUIRED; offer a safer bounded alternative when one exists."
+    },
+    "UNRESOLVED": {
+      "action": "Default deny, preserve threat/intent rivals, gather discriminating evidence without executing the risky effect."
+    }
+  },
+  "discovery_strategy": {
+    "order": [
+      "classify known ruin packs",
+      "inspect exact identity/capability/policy state",
+      "retrieve prior incidents and existing security mechanisms",
+      "model trust boundary and candidate effects",
+      "seek a read-only discriminating observation",
+      "compile recurring confirmed pattern into a guard rule with benign counterexamples"
+    ]
+  },
+  "donors": [
+    {
+      "repository": "Dicklesworthstone/destructive_command_guard",
+      "mechanism": "pre-execution destructive command interception, rule packs, explainable deny and safer alternatives",
+      "adoption": "ADAPT",
+      "claim_boundary": "DCG covers its declared command/effect patterns; Rising Sea-specific ruin classes require explicit residual rules."
+    },
+    {
+      "repository": "Dicklesworthstone/flywheel_connectors",
+      "mechanism": "mechanical capability typestate, default deny, zone isolation and truthful runtime resolution",
+      "adoption": "REFERENCE",
+      "claim_boundary": "FCP is the authority architecture donor; Rising Sea does not claim FCP is integrated until an adapter receipt exists."
+    },
+    {
+      "repository": "rfreel/risingsea",
+      "mechanism": "SPIFFE identity + OPA policy + exact human authority separation",
+      "adoption": "REUSE",
+      "claim_boundary": "Identity, policy, approval and effect remain distinct state objects."
+    }
+  ]
+}
