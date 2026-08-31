@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://risingsea.local/schemas/capability-observation.v1.json",
+  "title": "Rising Sea Capability Observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "catalog", "capabilities", "degraded"],
+  "properties": {
+    "schema": {"const": "risingsea.capability-observation.v1"},
+    "catalog": {"type": "string"},
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "capability_id",
+          "truth_state",
+          "truth_source_class",
+          "readiness",
+          "observed_path",
+          "documentation_uri",
+          "repair_command"
+        ],
+        "properties": {
+          "capability_id": {"type": "string", "minLength": 1},
+          "truth_state": {"enum": ["OBSERVED", "DOCUMENTED", "UNKNOWN"]},
+          "truth_source_class": {"enum": ["HOST_OBSERVED", "DOCUMENTATION_ONLY", "UNKNOWN"]},
+          "readiness": {"enum": ["READY", "UNAVAILABLE", "DEGRADED", "UNKNOWN"]},
+          "observed_path": {"type": ["string", "null"]},
+          "documentation_uri": {"type": ["string", "null"]},
+          "repair_command": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "degraded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["capability_id", "readiness", "reason", "repair_command"],
+        "properties": {
+          "capability_id": {"type": "string"},
+          "readiness": {"enum": ["UNAVAILABLE", "DEGRADED", "UNKNOWN"]},
+          "reason": {"type": "string"},
+          "repair_command": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
