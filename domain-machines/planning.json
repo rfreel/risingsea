@@ -1,0 +1,131 @@
+{
+  "schema": "risingsea.domain-machine.v1",
+  "domain_id": "planning",
+  "title": "Planning and Work Graph",
+  "representation": {
+    "kind": "obligation_dependency_graph",
+    "fields": [
+      "obligations",
+      "dependencies",
+      "status_partition",
+      "acceptance_witnesses",
+      "strongest_falsifiers",
+      "authority_ceiling"
+    ],
+    "novice_projection": [
+      "Problem",
+      "Why it matters",
+      "Known",
+      "Missing",
+      "Do not",
+      "Next",
+      "Proof of completion",
+      "If unresolved"
+    ]
+  },
+  "required_observations": [
+    "current work graph",
+    "declared dependencies",
+    "acceptance criteria",
+    "completion receipts"
+  ],
+  "invariants": [
+    {
+      "id": "PLAN-INV-001",
+      "statement": "A COMPLETE work item has a completion receipt."
+    },
+    {
+      "id": "PLAN-INV-002",
+      "statement": "An executable item has no unresolved blocking dependency."
+    },
+    {
+      "id": "PLAN-INV-003",
+      "statement": "UNKNOWN and CONTRADICTED obligations are not emitted as executable TODOs."
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "PLAN-DIAG-001",
+      "kind": "GRAPH_CHECK",
+      "mechanism": "dependency readiness and cycle analysis",
+      "outcomes": ["SATISFIED", "DEFECT", "BLOCKED"]
+    },
+    {
+      "id": "PLAN-DIAG-002",
+      "kind": "RECEIPT_CHECK",
+      "mechanism": "compare completion state to required evidence receipts",
+      "outcomes": ["SATISFIED", "EVIDENCE_GAP", "DEFECT"]
+    },
+    {
+      "id": "PLAN-DIAG-003",
+      "kind": "MODEL_CANDIDATE",
+      "mechanism": "candidate interpretation only after deterministic graph and receipt checks are exhausted",
+      "outcomes": ["UNKNOWN"]
+    }
+  ],
+  "repair_recipes": [
+    "planning.add-missing-dependency",
+    "planning.add-acceptance-witness",
+    "planning.split-unresolved-obligation"
+  ],
+  "verification_oracles": [
+    {
+      "id": "PLAN-ORACLE-001",
+      "kind": "graph_contract",
+      "condition": "ready set and dependency closure reproduce deterministically"
+    },
+    {
+      "id": "PLAN-ORACLE-002",
+      "kind": "receipt_contract",
+      "condition": "every COMPLETE item resolves to the required receipt"
+    }
+  ],
+  "ruin_boundaries": [
+    {
+      "id": "PLAN-RUIN-001",
+      "class": "scope_explosion",
+      "guard": "Do not widen scope or mutate unrelated work items during packet execution."
+    }
+  ],
+  "failure_routes": {
+    "MISSING_DEPENDENCY": {
+      "action": "BLOCK and identify the missing dependency ID."
+    },
+    "CYCLE": {
+      "action": "BLOCK the affected component and preserve independent ready work."
+    },
+    "UNRESOLVED": {
+      "action": "Create a typed unresolved object, preserve rival plans and seek a discriminating witness."
+    }
+  },
+  "discovery_strategy": {
+    "order": [
+      "inspect exact prior work/receipts",
+      "inspect dependency graph",
+      "retrieve matching planning exemplars",
+      "preserve rival decompositions",
+      "find the smallest acceptance or dependency distinction",
+      "compile the learned distinction into a graph rule or recipe"
+    ]
+  },
+  "donors": [
+    {
+      "repository": "Dicklesworthstone/beads_viewer",
+      "mechanism": "dependency graph triage, ready work, critical path and cycle analysis",
+      "adoption": "ADAPT",
+      "claim_boundary": "Graph analysis informs planning state; it does not establish implementation completion or authority."
+    },
+    {
+      "repository": "Dicklesworthstone/beads_rust",
+      "mechanism": "local dependency task graph with explicit state",
+      "adoption": "REFERENCE",
+      "claim_boundary": "Task records and readiness are coordination state, not proof of external effects."
+    },
+    {
+      "repository": "rfreel/risingsea",
+      "mechanism": "RESIDUALIZE obligation partition and evidence-gated work receipts",
+      "adoption": "REUSE",
+      "claim_boundary": "Only admitted evidence changes obligation or work verdicts."
+    }
+  ]
+}
