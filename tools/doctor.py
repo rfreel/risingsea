@@ -42,16 +42,23 @@ def check() -> dict:
             by_id[item_id] = item
 
     for item in items:
+        item_id = item.get("id")
         for dep in item.get("depends_on", []):
             if dep not in by_id:
-                issues.append({"kind": "missing-dependency", "id": item.get("id"), "dependency": dep})
+                issues.append({"kind": "missing-dependency", "id": item_id, "dependency": dep})
         for spec in item.get("specs", []):
             if not (ROOT / spec).exists():
-                issues.append({"kind": "missing-spec", "id": item.get("id"), "path": spec})
+                issues.append({"kind": "missing-spec", "id": item_id, "path": spec})
         if item.get("status") == "COMPLETE":
-            receipt = RECEIPTS / f"{item.get('id')}.json"
+            receipt = RECEIPTS / f"{item_id}.json"
             if not receipt.exists():
-                issues.append({"kind": "complete-without-receipt", "id": item.get("id"), "path": str(receipt.relative_to(ROOT))})
+                issues.append({"kind": "complete-without-receipt", "id": item_id, "path": str(receipt.relative_to(ROOT))})
+        if item.get("status") == "READY":
+            next_action = str(item.get("next_action", "")).strip()
+            if not next_action:
+                issues.append({"kind": "ready-without-next-action", "id": item_id})
+            elif "blocked until" in next_action.lower():
+                issues.append({"kind": "ready-with-blocked-next-action", "id": item_id, "next_action": next_action})
 
     ready = sorted((item for item in items if item.get("status") == "READY"), key=lambda item: (item.get("priority", 10**9), item.get("id", "")))
     return {
