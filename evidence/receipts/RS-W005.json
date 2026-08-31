@@ -1,0 +1,75 @@
+{
+  "schema": "risingsea.receipt.v1",
+  "work_id": "RS-W005",
+  "claim_status": "PASS",
+  "objective": "Create the machine contract that encodes expert-native representations, diagnostics, repair/oracle routes, ruin boundaries and donors for each domain.",
+  "observed_outputs": [
+    "specs/expert-domain-control-plane.md",
+    "docs/superpowers/plans/2026-08-31-expert-domain-control-plane.md",
+    "contracts/domain-machine.schema.json",
+    "domain-machines/registry.jsonl",
+    "domain-machines/planning.json",
+    "domain-machines/external-effect.json",
+    "domain-machines/security.json",
+    "tools/validate_domain_machines.py",
+    "tools/test_domain_machines.py",
+    "tools/test_frontier_projection.py",
+    "tools/build_frontier.py"
+  ],
+  "tdd": {
+    "red": {
+      "workflow_run_id": 33448162432,
+      "observed": "All prior source/compile-input gates passed and Run domain machine contract failed before the DomainMachine implementation existed."
+    },
+    "green": {
+      "workflow_run_id": 33448673470,
+      "observed": "DomainMachine contract and compact frontier contracts passed; doctor and deterministic generated-projection checks also passed."
+    }
+  },
+  "verification": {
+    "workflow": "Flywheel Integrity",
+    "run_id": 33448673470,
+    "conclusion": "success",
+    "checks": [
+      "source registry contract PASS",
+      "source inventory contract PASS",
+      "compile-input retrieval progress PASS without falsely claiming source closure",
+      "DomainMachine contract PASS",
+      "compact frontier contract PASS",
+      "doctor PASS",
+      "source inventory regeneration PASS",
+      "frontier regeneration PASS",
+      "generated projection diff PASS"
+    ]
+  },
+  "donor_boundaries": [
+    "Beads/BV are mechanism donors for dependency/frontier analysis; they do not prove Rising Sea completion or authority.",
+    "DCG is the preferred mature donor for destructive-command ruin guarding; no DCG integration is claimed by this receipt.",
+    "FCP is the preferred authority/truth-source architecture donor; no FCP integration is claimed by this receipt.",
+    "Cross-agent session resumer is prior art for canonical-IR write/read-back verification only."
+  ],
+  "accretion_delta": {
+    "new_contracts": [
+      "DomainMachine",
+      "compact decision-only triage"
+    ],
+    "new_domain_machines": [
+      "planning",
+      "external-effect",
+      "security"
+    ],
+    "new_guardrails": [
+      "deterministic diagnostics precede MODEL_CANDIDATE fallback",
+      "every domain has an UNRESOLVED discovery route",
+      "every donor has an explicit claim boundary",
+      "robot triage no longer duplicates full WorkPackets"
+    ],
+    "future_savings": "Expert representation and donor selection can now be referenced by stable machine contracts rather than reconstructed from prose for each task."
+  },
+  "unknowns": [
+    "Capability/truth-source observation is not yet implemented.",
+    "RuinGuard is not yet integrated.",
+    "The complete Rising Sea source corpus remains partially vendored under RS-W001B.",
+    "The expert-control design has not yet passed the cross-domain novice/adversarial benchmark."
+  ]
+}
