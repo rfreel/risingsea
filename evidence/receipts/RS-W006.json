@@ -1,0 +1,55 @@
+{
+  "schema": "risingsea.receipt.v1",
+  "work_id": "RS-W006",
+  "claim_status": "PASS",
+  "objective": "Observe capabilities, truth-source class, readiness and degradation without inferring live state from documentation.",
+  "observed_outputs": [
+    "contracts/capability-observation.schema.json",
+    "infrastructure/donors/capability-truth.json",
+    "tools/observe_capabilities.py",
+    "tools/test_capability_observation.py"
+  ],
+  "tdd": {
+    "red": {
+      "workflow_run_id": 33448932911,
+      "observed": "All prior gates passed; capability observation contract failed because tools/observe_capabilities.py and its contract artifacts did not yet exist."
+    },
+    "green": {
+      "workflow_run_id": 33449051665,
+      "observed": "Capability truth observation contract and all repository integrity gates passed."
+    }
+  },
+  "verification": {
+    "workflow": "Flywheel Integrity",
+    "run_id": 33449051665,
+    "conclusion": "success",
+    "checks": [
+      "documented-but-unobserved capability remains DOCUMENTED / UNAVAILABLE",
+      "observed executable becomes OBSERVED / READY with HOST_OBSERVED truth source",
+      "capability with neither executable nor documentation remains UNKNOWN / UNKNOWN",
+      "degraded missing donor exposes a repair route",
+      "documentation never implies runtime readiness",
+      "all prior source, domain, doctor and projection gates remain green"
+    ]
+  },
+  "accretion_delta": {
+    "new_contracts": [
+      "capability observation",
+      "capability donor probe catalog"
+    ],
+    "new_distinctions": [
+      "truth_state is separate from readiness",
+      "DOCUMENTED is not OBSERVED",
+      "UNAVAILABLE is not UNKNOWN"
+    ],
+    "new_guardrails": [
+      "runtime availability requires a local executable observation",
+      "missing mature donors degrade explicitly instead of being assumed present"
+    ]
+  },
+  "unknowns": [
+    "Capability observation currently probes executable presence; deeper live health/introspection is future adapter work.",
+    "No FCP, DCG, CASS, BV or APR integration is established by this receipt.",
+    "RuinGuard is not yet implemented."
+  ]
+}
