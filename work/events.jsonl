@@ -6,3 +6,5 @@
 {"seq":6,"event_id":"WE-0006","type":"ITEM_STATUS_SET","item_id":"RS-W010","status":"READY","next_action":"Write adversarial repair/oracle selection tests before implementing the repair registry and selector."}
 {"seq":7,"event_id":"WE-0007","type":"ITEM_STATUS_SET","item_id":"RS-W010","status":"COMPLETE","receipt":"evidence/receipts/RS-W010.json"}
 {"seq":8,"event_id":"WE-0008","type":"ITEM_STATUS_SET","item_id":"RS-W011","status":"READY","next_action":"Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard."}
+{"seq":9,"event_id":"WE-0009","type":"ITEM_STATUS_SET","item_id":"RS-W011","status":"COMPLETE","receipt":"evidence/receipts/RS-W011.json"}
+{"seq":10,"event_id":"WE-0010","type":"ITEM_STATUS_SET","item_id":"RS-W012","status":"READY","next_action":"Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates."}
