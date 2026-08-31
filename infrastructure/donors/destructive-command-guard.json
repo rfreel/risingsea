@@ -1,0 +1,13 @@
+{
+  "schema": "risingsea.donor-contract.v1",
+  "donor_id": "DONOR-DCG",
+  "repository": "Dicklesworthstone/destructive_command_guard",
+  "mechanism": "Pre-execution destructive command interception with explainable rule packs and fail-closed classification.",
+  "adoption_mode": "ADAPTER_REFERENCE",
+  "claim_boundary": "Rising Sea reuses the guard boundary and classification pattern. This repository does not claim DCG itself is installed or enforcing operations in the current runtime.",
+  "required_properties": [
+    "dangerous operations intercepted before execution",
+    "safe reads remain allowed",
+    "malformed or unclassified ruin candidates never silently allow"
+  ]
+}
