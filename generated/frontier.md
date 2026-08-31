@@ -4,23 +4,22 @@
 
 ## Highest-value ready item
 
-**RS-W006 — Implement capability and truth-source observation**
+**RS-W007 — Implement RuinGuard adapter boundary**
 
-Observe capabilities, truth-source class, readiness and degradation without inferring live state from documentation.
+Fail closed on ruin-class operations using DCG/FCP-style mechanical enforcement before ordinary action selection.
 
 Acceptance:
 
-- OBSERVED, DOCUMENTED, UNAVAILABLE and UNKNOWN remain distinct
-- Missing donor tool degrades explicitly
-- Every degradation includes a repair command where known
+- Destructive Git/filesystem/database and scope-explosion fixtures are blocked or require review
+- Safe reads remain allowed
+- Malformed classification never silently allows
 
-Strongest falsifier: The system reports a capability as available solely because a document says it exists.
+Strongest falsifier: An unclassified potentially catastrophic operation reaches execution as allowed.
 
-Next action: `Write and observe the failing capability/truth-source contract test before implementing deterministic probes.`
+Next action: `Write and observe failing ruin-guard fixtures for destructive Git/filesystem/database operations, scope explosion, malformed input, and safe reads before adding guard rules.`
 
 ## Blocked
 
-- `RS-W007` — Implement RuinGuard adapter boundary — blocked by: RS-W005, RS-W006
 - `RS-W008` — Implement deterministic expert router — blocked by: RS-W005, RS-W006, RS-W007
 - `RS-W009` — Implement expert diagnostic compiler — blocked by: RS-W008
 - `RS-W010` — Implement repair recipe and verification-oracle registry — blocked by: RS-W009
