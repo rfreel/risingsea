@@ -1,0 +1,139 @@
+{
+  "schema": "risingsea.domain-machine.v1",
+  "domain_id": "external-effect",
+  "title": "External Effect and Reconciliation",
+  "representation": {
+    "kind": "intent_attempt_observation_reconciliation_state_machine",
+    "fields": [
+      "intent",
+      "authority_binding",
+      "idempotency_key",
+      "attempts",
+      "provider_reference",
+      "observations",
+      "reconciliation",
+      "terminal_state"
+    ],
+    "novice_projection": [
+      "Problem",
+      "Why it matters",
+      "Known",
+      "Missing",
+      "Do not",
+      "Next",
+      "Proof of completion",
+      "If unresolved"
+    ]
+  },
+  "required_observations": [
+    "durable exact intent",
+    "current authority binding",
+    "attempt record",
+    "provider or authoritative system observation",
+    "reconciliation receipt"
+  ],
+  "invariants": [
+    {
+      "id": "EFFECT-INV-001",
+      "statement": "No external attempt occurs without an admitted exact intent."
+    },
+    {
+      "id": "EFFECT-INV-002",
+      "statement": "A timeout, transport success, exit code or missing error is not a terminal effect observation."
+    },
+    {
+      "id": "EFFECT-INV-003",
+      "statement": "An ambiguous outcome is observed/reconciled before retry unless the provider contract proves retry safety."
+    }
+  ],
+  "diagnostics": [
+    {
+      "id": "EFFECT-DIAG-001",
+      "kind": "STATE_MACHINE_CHECK",
+      "mechanism": "validate intent -> attempt -> observation -> reconciliation ordering",
+      "outcomes": ["SATISFIED", "DEFECT", "BLOCKED"]
+    },
+    {
+      "id": "EFFECT-DIAG-002",
+      "kind": "OBSERVATION_CHECK",
+      "mechanism": "determine whether fresh authoritative provider/system state exists",
+      "outcomes": ["SATISFIED", "EVIDENCE_GAP", "UNKNOWN"]
+    },
+    {
+      "id": "EFFECT-DIAG-003",
+      "kind": "MODEL_CANDIDATE",
+      "mechanism": "candidate semantic interpretation only when provider state cannot be decided mechanically",
+      "outcomes": ["UNKNOWN"]
+    }
+  ],
+  "repair_recipes": [
+    "effect.observe-before-retry",
+    "effect.bind-current-authority",
+    "effect.reconcile-provider-state"
+  ],
+  "verification_oracles": [
+    {
+      "id": "EFFECT-ORACLE-001",
+      "kind": "state_machine_invariant",
+      "condition": "terminal outcomes require an attempt plus authoritative observation and reconciliation"
+    },
+    {
+      "id": "EFFECT-ORACLE-002",
+      "kind": "read_back",
+      "condition": "post-action provider/system state is independently read and matches the reconciled result"
+    }
+  ],
+  "ruin_boundaries": [
+    {
+      "id": "EFFECT-RUIN-001",
+      "class": "duplicate_irreversible_effect",
+      "guard": "When prior outcome is ambiguous, observe/reconcile before retry."
+    },
+    {
+      "id": "EFFECT-RUIN-002",
+      "class": "unauthorized_external_effect",
+      "guard": "Exact current authority must bind to the exact action digest before intent."
+    }
+  ],
+  "failure_routes": {
+    "MISSING_OBSERVATION": {
+      "action": "Return EVIDENCE_GAP and issue the provider-state observation operation."
+    },
+    "AMBIGUOUS_OUTCOME": {
+      "action": "Do not retry; enter reconciliation or provider-specific adjudication."
+    },
+    "UNRESOLVED": {
+      "action": "Preserve multiple effect hypotheses, acquire the cheapest authoritative discriminating observation, and forbid blind retry."
+    }
+  },
+  "discovery_strategy": {
+    "order": [
+      "look up exact operation/idempotency/provider reference",
+      "query authoritative provider state",
+      "inspect provider idempotency/status contract",
+      "preserve applied/not-applied/partial rivals",
+      "run safe read-only adjudication",
+      "compile provider-specific reconciliation rule when validated"
+    ]
+  },
+  "donors": [
+    {
+      "repository": "rfreel/risingsea",
+      "mechanism": "EFFECT contract: durable intent, idempotent attempt, observation and reconciliation",
+      "adoption": "REUSE",
+      "claim_boundary": "Local intent and attempt records do not prove remote effect outcome."
+    },
+    {
+      "repository": "Dicklesworthstone/flywheel_connectors",
+      "mechanism": "capability-gated connector execution, truth-source classification and signed receipts",
+      "adoption": "ADAPT",
+      "claim_boundary": "FCP repository evidence establishes mechanism contracts, not live Rising Sea connector state."
+    },
+    {
+      "repository": "Dicklesworthstone/cross_agent_session_resumer",
+      "mechanism": "write then independent read-back verification pattern",
+      "adoption": "REFERENCE",
+      "claim_boundary": "Session reconstruction is prior art for read-back verification, not an external-effect oracle itself."
+    }
+  ]
+}
