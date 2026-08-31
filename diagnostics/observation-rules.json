@@ -1,0 +1,19 @@
+{
+  "schema": "risingsea.observation-admission-rules.v1",
+  "accepted_source_classes": [
+    "HOST_OBSERVED",
+    "MESH_OBSERVED",
+    "NODE_LOCAL_OBSERVED",
+    "OFFLINE_OBSERVED"
+  ],
+  "rejected_source_classes": [
+    "MODEL_CANDIDATE",
+    "DOCUMENTATION_ONLY",
+    "UNKNOWN"
+  ],
+  "authority_required": "observation",
+  "freshness_current_values": ["CURRENT"],
+  "freshness_preserved_values": ["CURRENT", "STALE", "UNKNOWN"],
+  "required_provenance_fields": ["kind", "ref", "digest"],
+  "contradiction_key": ["scope", "proposition"]
+}
