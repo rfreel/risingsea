@@ -37,3 +37,7 @@ Next action: `Write and observe the failing domain-machine test before adding th
 - `RS-W002` — Compile imported corpus into canonical current specs — blocked by: RS-W001B
 - `RS-W003` — Compile dependency-aware implementation work graph — blocked by: RS-W002, RS-W013
 - `RS-W004` — Run matched cold-agent flywheel navigation benchmark — blocked by: RS-W003, RS-W017
+
+## Partial
+
+- `RS-W001` — Import complete Rising Sea planning corpus with provenance — Source registration and current agent-layer vendoring are established; base-system vendoring remains incomplete.
