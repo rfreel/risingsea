@@ -4,23 +4,23 @@
 
 ## Highest-value ready item
 
-**RS-W010 — Implement repair recipe and verification-oracle registry**
+**RS-W011 — Implement unresolved discovery engine**
 
-Represent expert repair as bounded transition contracts with exact preconditions, actions, oracles, falsifiers, recovery and authority.
+When normal repair cannot resolve a problem, preserve rivals and mechanically seek discriminating evidence instead of improvising.
 
 Acceptance:
 
-- Every recipe names an exact verification oracle
-- Unknown preconditions block recipe selection
-- Ruin class and authority are explicit
+- Prior exact cases and exemplars are searched before new generation
+- At least two live rivals are preserved until evidence dominates
+- APR convergence does not upgrade truth
+- New distinctions can emit checker/rule/representation/recipe candidates
 
-Strongest falsifier: A repair can be selected without a defined proof of completion.
+Strongest falsifier: The discovery engine collapses an unresolved rival set to one answer without new evidence.
 
-Next action: `Write adversarial repair/oracle selection tests before implementing the repair registry and selector.`
+Next action: `Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.`
 
 ## Blocked
 
-- `RS-W011` — Implement unresolved discovery engine — blocked by: RS-W008, RS-W009, RS-W010
 - `RS-W012` — Implement obligation residual compiler — blocked by: RS-W009, RS-W011
 - `RS-W013` — Implement frontier-resolved WorkPacket lowering — blocked by: RS-W010, RS-W012
 - `RS-W014` — Implement external-effect reconciliation adapter — blocked by: RS-W007, RS-W010, RS-W013
