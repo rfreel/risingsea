@@ -1,0 +1,28 @@
+{
+  "schema": "risingsea.work-receipt.v1",
+  "work_id": "RS-W011",
+  "title": "Unresolved Discovery Engine",
+  "status": "PASS",
+  "completed_at": "2026-08-31",
+  "authority": "verification_receipt",
+  "basis": {
+    "plan": "docs/superpowers/plans/2026-08-31-adversarial-diagnostic-residual-flywheel.md",
+    "spec": "specs/expert-domain-control-plane.md",
+    "red_ci_run": 33451415045,
+    "green_ci_run": 33451538540,
+    "green_commit": "469a7e815534e0331d0ad3d7e065014b3636f9ed"
+  },
+  "verified": [
+    "exact prior case preempts new generation",
+    "incomplete search cannot establish novelty",
+    "reviewer consensus cannot collapse live rivals",
+    "unsafe discriminating witness is rejected through RuinGuard",
+    "fewer than two live rivals blocks discovery rather than manufacturing a comparison",
+    "safe witnesses are selected by explicit deterministic cost rank",
+    "complete search with no decisive witness permits candidate-only generation without changing truth",
+    "all prior repository integrity gates remain green"
+  ],
+  "strongest_falsifier": "A live rival disappears without new evidence, a search miss is treated as novelty without completeness, reviewer/model consensus changes truth, or an unsafe experiment is selected as a witness.",
+  "result": "PASS",
+  "next": "RS-W012 residual compiler must partition every obligation totally and disjointly and mechanically prevent UNKNOWN or CONTRADICTED obligations from entering executable TODO candidates."
+}
