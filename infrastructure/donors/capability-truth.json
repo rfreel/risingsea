@@ -1,0 +1,41 @@
+{
+  "schema": "risingsea.capability-catalog.v1",
+  "capabilities": [
+    {
+      "capability_id": "automated-plan-reviser-pro",
+      "command": "apr",
+      "documentation_uri": "https://github.com/Dicklesworthstone/automated_plan_reviser_pro",
+      "repair_command": "Install or configure automated_plan_reviser_pro, then rerun capability observation."
+    },
+    {
+      "capability_id": "beads-viewer",
+      "command": "bv",
+      "documentation_uri": "https://github.com/Dicklesworthstone/beads_viewer",
+      "repair_command": "Install or configure beads_viewer, then rerun capability observation."
+    },
+    {
+      "capability_id": "coding-agent-session-search",
+      "command": "cass",
+      "documentation_uri": "https://github.com/Dicklesworthstone/coding_agent_session_search",
+      "repair_command": "Install or configure coding_agent_session_search, then rerun capability observation."
+    },
+    {
+      "capability_id": "destructive-command-guard",
+      "command": "dcg",
+      "documentation_uri": "https://github.com/Dicklesworthstone/destructive_command_guard",
+      "repair_command": "Install or configure destructive_command_guard, then rerun capability observation."
+    },
+    {
+      "capability_id": "flywheel-connectors",
+      "command": "fwc",
+      "documentation_uri": "https://github.com/Dicklesworthstone/flywheel_connectors",
+      "repair_command": "Install or configure flywheel_connectors, then rerun capability observation."
+    },
+    {
+      "capability_id": "python-runtime",
+      "command": "python3",
+      "documentation_uri": "https://www.python.org/",
+      "repair_command": "Install Python 3 and ensure python3 is on PATH, then rerun capability observation."
+    }
+  ]
+}
