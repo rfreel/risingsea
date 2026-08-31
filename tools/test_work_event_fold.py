@@ -35,6 +35,7 @@ def main() -> int:
     payload = json.loads(result.stdout)
     by_id = {row["id"]: row for row in payload["items"]}
 
+    w010_next = str(by_id["RS-W010"].get("next_action", ""))
     checks = [
         (by_id["RS-W007"]["status"] == "COMPLETE", "RS-W007 not COMPLETE"),
         (by_id["RS-W008"]["status"] == "COMPLETE", "RS-W008 not COMPLETE"),
@@ -42,6 +43,8 @@ def main() -> int:
         (by_id["RS-W009"]["status"] == "COMPLETE", "RS-W009 not COMPLETE"),
         ("RS-W009A" in by_id["RS-W009"]["depends_on"], "RS-W009 missing RS-W009A dependency"),
         (by_id["RS-W010"]["status"] == "READY", "RS-W010 not READY"),
+        (bool(w010_next), "RS-W010 READY without next_action"),
+        ("blocked until" not in w010_next.lower(), "RS-W010 READY with blocked next_action"),
         (payload["event_count"] >= 6, "expected append-only transition events"),
     ]
     failed = [message for ok, message in checks if not ok]
