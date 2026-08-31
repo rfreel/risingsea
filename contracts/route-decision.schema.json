@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risingsea.route-decision.schema.v1",
+  "type": "object",
+  "required": ["schema", "route", "verdict", "model_invocation_allowed", "authority_effect"],
+  "properties": {
+    "schema": {"const": "risingsea.route-decision.v1"},
+    "route": {"type": "string"},
+    "verdict": {"enum": ["PASS", "FAIL", "UNKNOWN", "NOT_APPLICABLE"]},
+    "model_invocation_allowed": {"type": "boolean"},
+    "authority_effect": {"enum": ["none", "candidate_only"]},
+    "selected_ref": {"type": ["string", "null"]},
+    "reason": {"type": "string"}
+  },
+  "additionalProperties": false
+}
