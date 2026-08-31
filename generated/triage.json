@@ -1,99 +1,55 @@
 {
   "blocked": [
     {
-      "depends_on": [
-        "RS-W009",
-        "RS-W011"
-      ],
-      "id": "RS-W012",
-      "title": "Implement obligation residual compiler"
-    },
-    {
-      "depends_on": [
-        "RS-W010",
-        "RS-W012"
-      ],
+      "depends_on": ["RS-W010", "RS-W012"],
       "id": "RS-W013",
       "title": "Implement frontier-resolved WorkPacket lowering"
     },
     {
-      "depends_on": [
-        "RS-W007",
-        "RS-W010",
-        "RS-W013"
-      ],
+      "depends_on": ["RS-W007", "RS-W010", "RS-W013"],
       "id": "RS-W014",
       "title": "Implement external-effect reconciliation adapter"
     },
     {
-      "depends_on": [
-        "RS-W011",
-        "RS-W014"
-      ],
+      "depends_on": ["RS-W011", "RS-W014"],
       "id": "RS-W015",
       "title": "Implement procedural expertise compiler"
     },
     {
-      "depends_on": [
-        "RS-W005",
-        "RS-W009",
-        "RS-W010",
-        "RS-W011",
-        "RS-W013"
-      ],
+      "depends_on": ["RS-W005", "RS-W009", "RS-W010", "RS-W011", "RS-W013"],
       "id": "RS-W016",
       "title": "Implement novice expert-control surface"
     },
     {
-      "depends_on": [
-        "RS-W006",
-        "RS-W007",
-        "RS-W008",
-        "RS-W009",
-        "RS-W010",
-        "RS-W011",
-        "RS-W012",
-        "RS-W013",
-        "RS-W014",
-        "RS-W015",
-        "RS-W016"
-      ],
+      "depends_on": ["RS-W006", "RS-W007", "RS-W008", "RS-W009", "RS-W010", "RS-W011", "RS-W012", "RS-W013", "RS-W014", "RS-W015", "RS-W016"],
       "id": "RS-W017",
       "title": "Run adversarial expert-control benchmark"
     },
     {
-      "depends_on": [
-        "RS-W001B"
-      ],
+      "depends_on": ["RS-W001B"],
       "id": "RS-W002",
       "title": "Compile imported corpus into canonical current specs"
     },
     {
-      "depends_on": [
-        "RS-W002",
-        "RS-W013"
-      ],
+      "depends_on": ["RS-W002", "RS-W013"],
       "id": "RS-W003",
       "title": "Compile dependency-aware implementation work graph"
     },
     {
-      "depends_on": [
-        "RS-W003",
-        "RS-W017"
-      ],
+      "depends_on": ["RS-W003", "RS-W017"],
       "id": "RS-W004",
       "title": "Run matched cold-agent flywheel navigation benchmark"
     }
   ],
   "counts": {
-    "blocked": 9,
-    "complete": 8,
+    "blocked": 8,
+    "complete": 9,
     "other": 0,
     "partial": 1,
     "ready": 2,
     "total": 20
   },
-  "next_command": "Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.",
+  "next_command": "Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.",
   "partial": [
     {
       "id": "RS-W001",
@@ -104,10 +60,10 @@
   ],
   "ready": [
     {
-      "id": "RS-W011",
-      "next_action": "Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.",
+      "id": "RS-W012",
+      "next_action": "Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.",
       "priority": 0,
-      "title": "Implement unresolved discovery engine"
+      "title": "Implement obligation residual compiler"
     },
     {
       "id": "RS-W001B",
@@ -120,15 +76,14 @@
   "source": "fold(work/items.jsonl, work/events.jsonl)",
   "top_ready": {
     "acceptance": [
-      "Prior exact cases and exemplars are searched before new generation",
-      "At least two live rivals are preserved until evidence dominates",
-      "APR convergence does not upgrade truth",
-      "New distinctions can emit checker/rule/representation/recipe candidates"
+      "Partition is total and disjoint",
+      "Only UNSATISFIED enters TODO candidates",
+      "CONTRADICTED and UNKNOWN remain separate frontier classes"
     ],
-    "id": "RS-W011",
-    "next_action": "Write adversarial discovery tests that preserve rivals, search exact prior cases first, keep incomplete-search novelty UNKNOWN, and route unsafe experiments through RuinGuard.",
-    "objective": "When normal repair cannot resolve a problem, preserve rivals and mechanically seek discriminating evidence instead of improvising.",
-    "strongest_falsifier": "The discovery engine collapses an unresolved rival set to one answer without new evidence.",
-    "title": "Implement unresolved discovery engine"
+    "id": "RS-W012",
+    "next_action": "Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.",
+    "objective": "Partition obligations totally and disjointly, sending only UNSATISFIED obligations into executable TODO candidates.",
+    "strongest_falsifier": "An UNKNOWN or contradicted obligation is emitted as an executable TODO.",
+    "title": "Implement obligation residual compiler"
   }
 }
