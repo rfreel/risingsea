@@ -70,9 +70,9 @@ def test_truth_and_readiness_axes() -> None:
                         },
                         {
                             "capability_id": "unknown-tool",
-                            "command": null,
-                            "documentation_uri": null,
-                            "repair_command": null
+                            "command": None,
+                            "documentation_uri": None,
+                            "repair_command": None
                         }
                     ]
                 },
