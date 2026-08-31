@@ -1,52 +1,27 @@
 #!/usr/bin/env python3
-"""Build deterministic, compact flywheel triage projections from work/items.jsonl."""
+"""Build deterministic, compact flywheel triage projections from folded work state."""
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
 
+from work_state import load_current_items
+
 ROOT = Path(__file__).resolve().parents[1]
-WORK = ROOT / "work" / "items.jsonl"
 OUT = ROOT / "generated"
 
 
-def load_items() -> list[dict]:
-    items = []
-    for line_no, raw in enumerate(WORK.read_text(encoding="utf-8").splitlines(), 1):
-        if not raw.strip():
-            continue
-        try:
-            items.append(json.loads(raw))
-        except json.JSONDecodeError as exc:
-            raise SystemExit(f"{WORK}:{line_no}: invalid JSON: {exc}") from exc
-    return items
-
-
 def ready_projection(item: dict) -> dict:
-    return {
-        "id": item["id"],
-        "title": item["title"],
-        "priority": item.get("priority"),
-        "next_action": item.get("next_action"),
-    }
+    return {"id": item["id"], "title": item["title"], "priority": item.get("priority"), "next_action": item.get("next_action")}
 
 
 def blocked_projection(item: dict) -> dict:
-    return {
-        "id": item["id"],
-        "title": item["title"],
-        "depends_on": item.get("depends_on", []),
-    }
+    return {"id": item["id"], "title": item["title"], "depends_on": item.get("depends_on", [])}
 
 
 def partial_projection(item: dict) -> dict:
-    return {
-        "id": item["id"],
-        "title": item["title"],
-        "partial_reason": item.get("partial_reason"),
-        "next_action": item.get("next_action"),
-    }
+    return {"id": item["id"], "title": item["title"], "partial_reason": item.get("partial_reason"), "next_action": item.get("next_action")}
 
 
 def top_projection(item: dict | None) -> dict | None:
@@ -63,19 +38,10 @@ def top_projection(item: dict | None) -> dict | None:
 
 
 def main() -> int:
-    items = load_items()
-    ready = sorted(
-        (item for item in items if item.get("status") == "READY"),
-        key=lambda item: (item.get("priority", 10**9), item["id"]),
-    )
-    blocked = sorted(
-        (item for item in items if item.get("status") == "BLOCKED"),
-        key=lambda item: (item.get("priority", 10**9), item["id"]),
-    )
-    partial = sorted(
-        (item for item in items if item.get("status") == "PARTIAL"),
-        key=lambda item: (item.get("priority", 10**9), item["id"]),
-    )
+    items, _events = load_current_items()
+    ready = sorted((item for item in items if item.get("status") == "READY"), key=lambda item: (item.get("priority", 10**9), item["id"]))
+    blocked = sorted((item for item in items if item.get("status") == "BLOCKED"), key=lambda item: (item.get("priority", 10**9), item["id"]))
+    partial = sorted((item for item in items if item.get("status") == "PARTIAL"), key=lambda item: (item.get("priority", 10**9), item["id"]))
     complete = [item for item in items if item.get("status") == "COMPLETE"]
     classified = {"READY", "BLOCKED", "PARTIAL", "COMPLETE"}
     other = [item for item in items if item.get("status") not in classified]
@@ -83,15 +49,8 @@ def main() -> int:
     top = ready[0] if ready else None
     triage = {
         "schema": "risingsea.triage.v2",
-        "source": "work/items.jsonl",
-        "counts": {
-            "total": len(items),
-            "ready": len(ready),
-            "blocked": len(blocked),
-            "partial": len(partial),
-            "complete": len(complete),
-            "other": len(other),
-        },
+        "source": "fold(work/items.jsonl, work/events.jsonl)",
+        "counts": {"total": len(items), "ready": len(ready), "blocked": len(blocked), "partial": len(partial), "complete": len(complete), "other": len(other)},
         "top_ready": top_projection(top),
         "ready": [ready_projection(item) for item in ready],
         "blocked": [blocked_projection(item) for item in blocked],
@@ -100,35 +59,16 @@ def main() -> int:
     }
 
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "triage.json").write_text(
-        json.dumps(triage, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-    )
+    (OUT / "triage.json").write_text(json.dumps(triage, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    lines = [
-        "# Current Frontier",
-        "",
-        "> GENERATED from `work/items.jsonl` by `tools/build_frontier.py`. Do not edit by hand.",
-        "",
-    ]
+    lines = ["# Current Frontier", "", "> GENERATED from `fold(work/items.jsonl, work/events.jsonl)` by `tools/build_frontier.py`. Do not edit by hand.", ""]
     if top:
-        lines.extend(
-            [
-                "## Highest-value ready item",
-                "",
-                f"**{top['id']} — {top['title']}**",
-                "",
-                top["objective"],
-                "",
-                "Acceptance:",
-                "",
-                *[f"- {criterion}" for criterion in top.get("acceptance", [])],
-                "",
-                f"Strongest falsifier: {top.get('strongest_falsifier', 'not recorded')}",
-                "",
-                f"Next action: `{top.get('next_action', '')}`",
-                "",
-            ]
-        )
+        lines.extend([
+            "## Highest-value ready item", "", f"**{top['id']} — {top['title']}**", "", top["objective"], "", "Acceptance:", "",
+            *[f"- {criterion}" for criterion in top.get("acceptance", [])], "",
+            f"Strongest falsifier: {top.get('strongest_falsifier', 'not recorded')}", "",
+            f"Next action: `{top.get('next_action', '')}`", "",
+        ])
     else:
         lines.extend(["No READY work items.", ""])
 
