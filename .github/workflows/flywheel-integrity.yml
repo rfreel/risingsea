@@ -17,8 +17,12 @@ jobs:
           python-version: '3.12'
       - name: Run source registry contract
         run: python tools/test_source_registry.py
+      - name: Run source inventory contract
+        run: python tools/test_source_inventory.py
       - name: Run read-only doctor
         run: python tools/doctor.py --json
+      - name: Rebuild generated source inventory
+        run: python tools/build_source_inventory.py
       - name: Rebuild generated frontier
         run: python tools/build_frontier.py
       - name: Require generated projections to be current
