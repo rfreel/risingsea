@@ -1,0 +1,31 @@
+{
+  "schema": "risingsea.work-receipt.v1",
+  "work_id": "RS-W009",
+  "title": "Deterministic Expert Diagnostic Compiler",
+  "status": "PASS",
+  "completed_at": "2026-08-31",
+  "authority": "verification_receipt",
+  "basis": {
+    "plan": "docs/superpowers/plans/2026-08-31-adversarial-diagnostic-residual-flywheel.md",
+    "spec": "specs/expert-domain-control-plane.md",
+    "observation_receipt": "evidence/receipts/RS-W009A.json",
+    "red_ci_run": 33450565737,
+    "green_ci_run": 33450620442,
+    "green_commit": "a66b02fb3a03c066d4c9e3aed7c417dc0525ab38"
+  },
+  "verified": [
+    "false required invariant produces DEFECT",
+    "true required invariant produces SATISFIED",
+    "missing current observation produces EVIDENCE_GAP",
+    "contradictory evidence produces CONTRADICTED before satisfaction",
+    "failed prerequisite produces BLOCKED",
+    "no deciding deterministic rule produces UNKNOWN",
+    "model candidate cannot override deterministic DEFECT",
+    "STALE true evidence cannot satisfy a CURRENT-bound invariant",
+    "unknown rule ID remains UNKNOWN rather than synthesizing semantics",
+    "all prior integrity gates remain green"
+  ],
+  "strongest_falsifier": "A terminal verdict can be established without an explicit deterministic rule and admitted observation basis, or model/stale evidence can override the deterministic verdict.",
+  "result": "PASS",
+  "next": "RS-W010 repair recipes must consume diagnostic receipts and may not select a repair without exact preconditions, write bounds, oracle, falsifier, recovery, ruin class and authority."
+}
