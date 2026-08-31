@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risingsea.accepted-observation.schema.v1",
+  "title": "Accepted Observation Set",
+  "type": "object",
+  "required": ["schema", "accepted", "rejected", "contradictions"],
+  "properties": {
+    "schema": {"const": "risingsea.accepted-observation-set.v1"},
+    "accepted": {"type": "array", "items": {"$ref": "#/$defs/accepted"}},
+    "rejected": {"type": "array", "items": {"$ref": "#/$defs/rejected"}},
+    "contradictions": {"type": "array", "items": {"$ref": "#/$defs/contradiction"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "required": ["kind", "ref", "digest"],
+      "properties": {
+        "kind": {"type": "string", "minLength": 1},
+        "ref": {"type": "string", "minLength": 1},
+        "digest": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "accepted": {
+      "type": "object",
+      "required": ["observation_id", "proposition", "scope", "value", "source_class", "authority", "provenance", "freshness", "observed_at", "current_for_decision", "digest"],
+      "properties": {
+        "observation_id": {"type": "string", "minLength": 1},
+        "proposition": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "value": {},
+        "source_class": {"enum": ["HOST_OBSERVED", "MESH_OBSERVED", "NODE_LOCAL_OBSERVED", "OFFLINE_OBSERVED"]},
+        "authority": {"const": "observation"},
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "freshness": {"enum": ["CURRENT", "STALE", "UNKNOWN"]},
+        "observed_at": {"type": "string", "minLength": 1},
+        "current_for_decision": {"type": "boolean"},
+        "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "rejected": {
+      "type": "object",
+      "required": ["observation_id", "reason"],
+      "properties": {
+        "observation_id": {"type": "string"},
+        "reason": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "contradiction": {
+      "type": "object",
+      "required": ["scope", "proposition", "observation_ids"],
+      "properties": {
+        "scope": {"type": "string", "minLength": 1},
+        "proposition": {"type": "string", "minLength": 1},
+        "observation_ids": {"type": "array", "minItems": 2, "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}
