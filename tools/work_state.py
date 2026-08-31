@@ -72,7 +72,12 @@ def load_current_items() -> tuple[list[dict], list[dict]]:
             if not isinstance(status, str) or not status:
                 raise ValueError(f"{event_id}: missing status")
             by_id[item_id]["status"] = status
-            if status == "COMPLETE":
+            if "next_action" in event:
+                next_action = event.get("next_action")
+                if not isinstance(next_action, str) or not next_action.strip():
+                    raise ValueError(f"{event_id}: invalid next_action")
+                by_id[item_id]["next_action"] = next_action
+            elif status == "COMPLETE":
                 by_id[item_id]["next_action"] = f"Read {event.get('receipt', f'evidence/receipts/{item_id}.json')}"
         elif event_type == "DEPENDENCY_ADDED":
             item_id = event.get("item_id")
