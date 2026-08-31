@@ -1,0 +1,14 @@
+{
+  "schema": "risingsea.routing-precedence.v1",
+  "order": [
+    "EXACT_RESULT",
+    "NEGATIVE_MEMO",
+    "COMPILED_RULE",
+    "SEMANTIC_SEARCH",
+    "MODEL_CANDIDATE"
+  ],
+  "rules": {
+    "SEARCH_INCOMPLETE": "An incomplete search miss is UNKNOWN and blocks model fallback until completeness is established or the route explicitly degrades.",
+    "MODEL_CANDIDATE": "Model output is candidate-only and cannot change accepted state without an independent witness."
+  }
+}
