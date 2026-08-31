@@ -22,11 +22,7 @@ def main() -> int:
         return 1
 
     result = subprocess.run(
-        [sys.executable, str(WORK_STATE), "--json"],
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-        check=False,
+        [sys.executable, str(WORK_STATE), "--json"], cwd=ROOT, text=True, capture_output=True, check=False
     )
     if result.returncode != 0:
         print(result.stdout, file=sys.stderr)
@@ -35,16 +31,13 @@ def main() -> int:
     payload = json.loads(result.stdout)
     by_id = {row["id"]: row for row in payload["items"]}
 
-    checks = [
-        (by_id["RS-W007"]["status"] == "COMPLETE", "RS-W007 not COMPLETE"),
-        (by_id["RS-W008"]["status"] == "COMPLETE", "RS-W008 not COMPLETE"),
-        (by_id["RS-W009A"]["status"] == "COMPLETE", "RS-W009A not COMPLETE"),
-        (by_id["RS-W009"]["status"] == "COMPLETE", "RS-W009 not COMPLETE"),
-        (by_id["RS-W010"]["status"] == "COMPLETE", "RS-W010 not COMPLETE"),
-        (by_id["RS-W011"]["status"] == "READY", "RS-W011 not READY"),
+    completed = ["RS-W007", "RS-W008", "RS-W009A", "RS-W009", "RS-W010", "RS-W011"]
+    checks = [(by_id[item_id]["status"] == "COMPLETE", f"{item_id} not COMPLETE") for item_id in completed]
+    checks.extend([
+        (by_id["RS-W012"]["status"] == "READY", "RS-W012 not READY"),
         ("RS-W009A" in by_id["RS-W009"]["depends_on"], "RS-W009 missing RS-W009A dependency"),
-        (payload["event_count"] >= 8, "expected append-only transition events"),
-    ]
+        (payload["event_count"] >= 10, "expected append-only transition events"),
+    ])
     for item in payload["items"]:
         if item.get("status") == "READY":
             next_action = str(item.get("next_action", "")).strip()
