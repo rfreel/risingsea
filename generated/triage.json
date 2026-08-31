@@ -1,150 +1,182 @@
 {
   "blocked": [
     {
-      "acceptance": [
-        "One canonical current representation per durable concept",
-        "Historical sources remain recoverable",
-        "Conflicting claims are explicit",
-        "UNKNOWN is preserved",
-        "Canonical specs cite source IDs"
+      "depends_on": [
+        "RS-W005"
       ],
-      "authority_ceiling": "candidate",
+      "id": "RS-W006",
+      "title": "Implement capability and truth-source observation"
+    },
+    {
+      "depends_on": [
+        "RS-W005",
+        "RS-W006"
+      ],
+      "id": "RS-W007",
+      "title": "Implement RuinGuard adapter boundary"
+    },
+    {
+      "depends_on": [
+        "RS-W005",
+        "RS-W006",
+        "RS-W007"
+      ],
+      "id": "RS-W008",
+      "title": "Implement deterministic expert router"
+    },
+    {
+      "depends_on": [
+        "RS-W008"
+      ],
+      "id": "RS-W009",
+      "title": "Implement expert diagnostic compiler"
+    },
+    {
+      "depends_on": [
+        "RS-W009"
+      ],
+      "id": "RS-W010",
+      "title": "Implement repair recipe and verification-oracle registry"
+    },
+    {
+      "depends_on": [
+        "RS-W008",
+        "RS-W009",
+        "RS-W010"
+      ],
+      "id": "RS-W011",
+      "title": "Implement unresolved discovery engine"
+    },
+    {
+      "depends_on": [
+        "RS-W009",
+        "RS-W011"
+      ],
+      "id": "RS-W012",
+      "title": "Implement obligation residual compiler"
+    },
+    {
+      "depends_on": [
+        "RS-W010",
+        "RS-W012"
+      ],
+      "id": "RS-W013",
+      "title": "Implement frontier-resolved WorkPacket lowering"
+    },
+    {
+      "depends_on": [
+        "RS-W007",
+        "RS-W010",
+        "RS-W013"
+      ],
+      "id": "RS-W014",
+      "title": "Implement external-effect reconciliation adapter"
+    },
+    {
+      "depends_on": [
+        "RS-W011",
+        "RS-W014"
+      ],
+      "id": "RS-W015",
+      "title": "Implement procedural expertise compiler"
+    },
+    {
+      "depends_on": [
+        "RS-W005",
+        "RS-W009",
+        "RS-W010",
+        "RS-W011",
+        "RS-W013"
+      ],
+      "id": "RS-W016",
+      "title": "Implement novice expert-control surface"
+    },
+    {
+      "depends_on": [
+        "RS-W006",
+        "RS-W007",
+        "RS-W008",
+        "RS-W009",
+        "RS-W010",
+        "RS-W011",
+        "RS-W012",
+        "RS-W013",
+        "RS-W014",
+        "RS-W015",
+        "RS-W016"
+      ],
+      "id": "RS-W017",
+      "title": "Run adversarial expert-control benchmark"
+    },
+    {
       "depends_on": [
         "RS-W001B"
       ],
-      "expected_accretion": [
-        "Canonical spec set",
-        "Supersession graph"
-      ],
       "id": "RS-W002",
-      "next_action": "Blocked until RS-W001B completes.",
-      "objective": "Reduce the imported corpus to one current semantic representation per durable concept while retaining citations and supersession links.",
-      "priority": 2,
-      "specs": [
-        "specs/current-system.md"
-      ],
-      "status": "BLOCKED",
-      "strongest_falsifier": "Two current pages independently claim authority over the same semantic object without an explicit relationship.",
       "title": "Compile imported corpus into canonical current specs"
     },
     {
-      "acceptance": [
-        "Workers do not need the original corpus",
-        "Dependency graph is acyclic or cycles are explicit failures",
-        "Every ready packet has testable acceptance criteria",
-        "Critical path and blockers are mechanically derivable"
-      ],
-      "authority_ceiling": "candidate",
       "depends_on": [
-        "RS-W002"
-      ],
-      "expected_accretion": [
-        "Implementation work DAG"
+        "RS-W002",
+        "RS-W013"
       ],
       "id": "RS-W003",
-      "next_action": "Blocked until RS-W002 completes.",
-      "objective": "Turn canonical specs into self-contained implementation packets with explicit dependencies, witnesses, falsifiers, and acceptance criteria.",
-      "priority": 3,
-      "specs": [
-        "specs/current-system.md"
-      ],
-      "status": "BLOCKED",
-      "strongest_falsifier": "A worker must infer a hidden dependency or reread historical planning prose to execute a packet.",
       "title": "Compile dependency-aware implementation work graph"
     },
     {
-      "acceptance": [
-        "Matched tasks use fixed success criteria",
-        "Pages read, tokens, errors, time-to-next-action, and recovery are measured separately",
-        "No scalar winner is asserted without explicit weights"
-      ],
-      "authority_ceiling": "validation",
       "depends_on": [
-        "RS-W003"
-      ],
-      "expected_accretion": [
-        "Measured agent-experience evidence",
-        "Information architecture repair candidates"
+        "RS-W003",
+        "RS-W017"
       ],
       "id": "RS-W004",
-      "next_action": "Blocked until a real work graph exists.",
-      "objective": "Measure whether the repository actually reduces context, navigation, recovery, and decision cost rather than assuming ergonomics from design.",
-      "priority": 4,
-      "specs": [
-        "specs/current-system.md"
-      ],
-      "status": "BLOCKED",
-      "strongest_falsifier": "The flywheel surface consumes equal or greater resources without improving correctness or recoverability.",
       "title": "Run matched cold-agent flywheel navigation benchmark"
     }
   ],
   "counts": {
-    "blocked": 3,
+    "blocked": 15,
     "complete": 1,
-    "ready": 1,
-    "total": 6
+    "other": 0,
+    "partial": 1,
+    "ready": 2,
+    "total": 19
   },
-  "next_command": "Vendor the current v2 semantic source set first, update source availability and repo_path, then mechanically identify any historical sources still required by RS-W002.",
+  "next_command": "Write and observe the failing domain-machine test before adding the registry and validator.",
+  "partial": [
+    {
+      "id": "RS-W001",
+      "next_action": "Read evidence/receipts/RS-W001.json; retrieval completeness continues in RS-W001B.",
+      "partial_reason": "Source registration and current agent-layer vendoring are established; base-system vendoring remains incomplete.",
+      "title": "Import complete Rising Sea planning corpus with provenance"
+    }
+  ],
   "ready": [
     {
-      "acceptance": [
-        "No source needed by RS-W002 remains REGISTERED_ONLY",
-        "Every VENDORED source rehashes to the registry SHA-256",
-        "Every EXTERNAL source has a stable independently retrievable URI and anchored digest",
-        "Large bundle sources may be represented by retrieval-complete constituent artifacts rather than duplicated archives when the mapping is explicit",
-        "A fresh GitHub-only agent can obtain every source required to compile current specs"
-      ],
-      "authority_ceiling": "candidate",
-      "continues": "RS-W001",
-      "depends_on": [
-        "RS-W000"
-      ],
-      "expected_accretion": [
-        "Self-contained source corpus",
-        "Retrieval-completeness checker",
-        "Stable source-to-vendored mapping"
-      ],
+      "id": "RS-W005",
+      "next_action": "Write and observe the failing domain-machine test before adding the registry and validator.",
+      "priority": 0,
+      "title": "Implement DomainMachine contract and registry validator"
+    },
+    {
       "id": "RS-W001B",
-      "next_action": "Vendor the current v2 semantic source set first, update source availability and repo_path, then mechanically identify any historical sources still required by RS-W002.",
-      "objective": "Ensure every source needed for canonical-spec compilation is either vendored byte-for-byte in the repository or points to a stable independently retrievable external object with an anchored digest.",
+      "next_action": "Continue base-system vendoring according to sources/compile-inputs.json and close only on check_compile_inputs.py --require-complete.",
       "priority": 1,
-      "specs": [
-        "specs/current-system.md"
-      ],
-      "status": "READY",
-      "strongest_falsifier": "A source required by RS-W002 can only be recovered from prior chat context or an unavailable transient artifact URI.",
       "title": "Make registered Rising Sea corpus retrieval-complete"
     }
   ],
-  "schema": "risingsea.triage.v1",
+  "schema": "risingsea.triage.v2",
   "source": "work/items.jsonl",
   "top_ready": {
     "acceptance": [
-      "No source needed by RS-W002 remains REGISTERED_ONLY",
-      "Every VENDORED source rehashes to the registry SHA-256",
-      "Every EXTERNAL source has a stable independently retrievable URI and anchored digest",
-      "Large bundle sources may be represented by retrieval-complete constituent artifacts rather than duplicated archives when the mapping is explicit",
-      "A fresh GitHub-only agent can obtain every source required to compile current specs"
+      "DomainMachine schema and registry exist",
+      "Three real domain machines validate: planning, external-effect, security",
+      "Every donor declares repository, mechanism, adoption mode and claim boundary",
+      "Every machine has an unresolved/discovery route",
+      "CI rejects duplicate IDs, missing machine files and incomplete donor contracts"
     ],
-    "authority_ceiling": "candidate",
-    "continues": "RS-W001",
-    "depends_on": [
-      "RS-W000"
-    ],
-    "expected_accretion": [
-      "Self-contained source corpus",
-      "Retrieval-completeness checker",
-      "Stable source-to-vendored mapping"
-    ],
-    "id": "RS-W001B",
-    "next_action": "Vendor the current v2 semantic source set first, update source availability and repo_path, then mechanically identify any historical sources still required by RS-W002.",
-    "objective": "Ensure every source needed for canonical-spec compilation is either vendored byte-for-byte in the repository or points to a stable independently retrievable external object with an anchored digest.",
-    "priority": 1,
-    "specs": [
-      "specs/current-system.md"
-    ],
-    "status": "READY",
-    "strongest_falsifier": "A source required by RS-W002 can only be recovered from prior chat context or an unavailable transient artifact URI.",
-    "title": "Make registered Rising Sea corpus retrieval-complete"
+    "id": "RS-W005",
+    "next_action": "Write and observe the failing domain-machine test before adding the registry and validator.",
+    "objective": "Create the machine contract that encodes expert-native representations, diagnostics, repair/oracle routes, ruin boundaries and donors for each domain.",
+    "strongest_falsifier": "A domain machine can validate while omitting the representation or route needed to handle an unresolved case.",
+    "title": "Implement DomainMachine contract and registry validator"
   }
 }
