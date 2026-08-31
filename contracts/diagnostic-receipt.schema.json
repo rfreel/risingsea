@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "risingsea.diagnostic-receipt.schema.v1",
+  "title": "Deterministic Diagnostic Receipt",
+  "type": "object",
+  "required": ["schema", "problem_id", "domain", "verdict", "rule_ids", "observation_ids", "missing", "unknown_rule_ids", "model_candidates_considered"],
+  "properties": {
+    "schema": {"const": "risingsea.diagnostic-receipt.v1"},
+    "problem_id": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "verdict": {"enum": ["SATISFIED", "DEFECT", "EVIDENCE_GAP", "BLOCKED", "CONTRADICTED", "UNKNOWN"]},
+    "rule_ids": {"type": "array", "items": {"type": "string"}},
+    "observation_ids": {"type": "array", "items": {"type": "string"}},
+    "missing": {"type": "array", "items": {"type": "string"}},
+    "unknown_rule_ids": {"type": "array", "items": {"type": "string"}},
+    "model_candidates_considered": {"const": 0}
+  },
+  "additionalProperties": false
+}
