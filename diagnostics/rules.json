@@ -1,0 +1,25 @@
+{
+  "schema": "risingsea.diagnostic-rules.v1",
+  "rules": [
+    {
+      "rule_id": "build.api.compiles",
+      "domain": "build",
+      "kind": "require_true",
+      "proposition": "build.target.api compiles",
+      "scope": "build.target.api",
+      "requires_current": true,
+      "false_verdict": "DEFECT",
+      "missing_verdict": "EVIDENCE_GAP"
+    },
+    {
+      "rule_id": "build.toolchain.available",
+      "domain": "build",
+      "kind": "prerequisite_true",
+      "proposition": "build.toolchain available",
+      "scope": "build.toolchain",
+      "requires_current": true,
+      "false_verdict": "BLOCKED",
+      "missing_verdict": "EVIDENCE_GAP"
+    }
+  ]
+}
