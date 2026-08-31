@@ -1,0 +1,25 @@
+{
+  "schema": "risingsea.ruin-classes.v1",
+  "classes": [
+    {
+      "id": "destructive_git_history",
+      "decision": "BLOCK",
+      "description": "Git operations that can destroy uncommitted work or rewrite history without an explicit recovery boundary."
+    },
+    {
+      "id": "irreversible_data_loss",
+      "decision": "BLOCK",
+      "description": "Filesystem or database operations that can irreversibly delete durable data."
+    },
+    {
+      "id": "scope_explosion",
+      "decision": "REVIEW_REQUIRED",
+      "description": "A proposed write set expands beyond the exact declared write set."
+    },
+    {
+      "id": "unclassified_operation",
+      "decision": "REVIEW_REQUIRED",
+      "description": "Malformed or insufficiently classified operations fail closed to review."
+    }
+  ]
+}
