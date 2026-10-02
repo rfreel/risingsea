@@ -4,23 +4,22 @@
 
 ## Highest-value ready item
 
-**RS-W012 — Implement obligation residual compiler**
+**RS-W013 — Implement frontier-resolved WorkPacket lowering**
 
-Partition obligations totally and disjointly, sending only UNSATISFIED obligations into executable TODO candidates.
+Lower residual obligations into packets a simple executor can run without architecture, scope, test or recovery decisions.
 
 Acceptance:
 
-- Partition is total and disjoint
-- Only UNSATISFIED enters TODO candidates
-- CONTRADICTED and UNKNOWN remain separate frontier classes
+- Packets with unresolved design alternatives are rejected
+- Reasoning-debt vector is below release threshold
+- Execution grammar is READ-CHECK-CHANGE-VERIFY-RECEIPT-STOP
 
-Strongest falsifier: An UNKNOWN or contradicted obligation is emitted as an executable TODO.
+Strongest falsifier: A worker must make an undeclared design, scope or verification decision during packet execution.
 
-Next action: `Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.`
+Next action: `Write adversarial WorkPacket-lowering mutations for missing oracle, unresolved strategy, widened write set, stale head, missing failure route, authority ambiguity, and undefined semantic terms before implementing lowering.`
 
 ## Blocked
 
-- `RS-W013` — Implement frontier-resolved WorkPacket lowering — blocked by: RS-W010, RS-W012
 - `RS-W014` — Implement external-effect reconciliation adapter — blocked by: RS-W007, RS-W010, RS-W013
 - `RS-W015` — Implement procedural expertise compiler — blocked by: RS-W011, RS-W014
 - `RS-W016` — Implement novice expert-control surface — blocked by: RS-W005, RS-W009, RS-W010, RS-W011, RS-W013

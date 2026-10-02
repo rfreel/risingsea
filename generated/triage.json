@@ -2,14 +2,6 @@
   "blocked": [
     {
       "depends_on": [
-        "RS-W010",
-        "RS-W012"
-      ],
-      "id": "RS-W013",
-      "title": "Implement frontier-resolved WorkPacket lowering"
-    },
-    {
-      "depends_on": [
         "RS-W007",
         "RS-W010",
         "RS-W013"
@@ -78,14 +70,14 @@
     }
   ],
   "counts": {
-    "blocked": 8,
-    "complete": 9,
+    "blocked": 7,
+    "complete": 10,
     "other": 0,
     "partial": 1,
     "ready": 2,
     "total": 20
   },
-  "next_command": "Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.",
+  "next_command": "Write adversarial WorkPacket-lowering mutations for missing oracle, unresolved strategy, widened write set, stale head, missing failure route, authority ambiguity, and undefined semantic terms before implementing lowering.",
   "partial": [
     {
       "id": "RS-W001",
@@ -96,10 +88,10 @@
   ],
   "ready": [
     {
-      "id": "RS-W012",
-      "next_action": "Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.",
+      "id": "RS-W013",
+      "next_action": "Write adversarial WorkPacket-lowering mutations for missing oracle, unresolved strategy, widened write set, stale head, missing failure route, authority ambiguity, and undefined semantic terms before implementing lowering.",
       "priority": 0,
-      "title": "Implement obligation residual compiler"
+      "title": "Implement frontier-resolved WorkPacket lowering"
     },
     {
       "id": "RS-W001B",
@@ -112,14 +104,14 @@
   "source": "fold(work/items.jsonl, work/events.jsonl)",
   "top_ready": {
     "acceptance": [
-      "Partition is total and disjoint",
-      "Only UNSATISFIED enters TODO candidates",
-      "CONTRADICTED and UNKNOWN remain separate frontier classes"
+      "Packets with unresolved design alternatives are rejected",
+      "Reasoning-debt vector is below release threshold",
+      "Execution grammar is READ-CHECK-CHANGE-VERIFY-RECEIPT-STOP"
     ],
-    "id": "RS-W012",
-    "next_action": "Write adversarial residual-partition tests proving total/disjoint classification and that only UNSATISFIED obligations can become executable TODO candidates.",
-    "objective": "Partition obligations totally and disjointly, sending only UNSATISFIED obligations into executable TODO candidates.",
-    "strongest_falsifier": "An UNKNOWN or contradicted obligation is emitted as an executable TODO.",
-    "title": "Implement obligation residual compiler"
+    "id": "RS-W013",
+    "next_action": "Write adversarial WorkPacket-lowering mutations for missing oracle, unresolved strategy, widened write set, stale head, missing failure route, authority ambiguity, and undefined semantic terms before implementing lowering.",
+    "objective": "Lower residual obligations into packets a simple executor can run without architecture, scope, test or recovery decisions.",
+    "strongest_falsifier": "A worker must make an undeclared design, scope or verification decision during packet execution.",
+    "title": "Implement frontier-resolved WorkPacket lowering"
   }
 }
