@@ -45,3 +45,17 @@ Agent: read [`AGENTS.md`](AGENTS.md), then [`generated/frontier.md`](generated/f
 `LLM OUTPUT != STATE TRANSITION`.
 
 PASS, PROMOTED, AUTHORIZED, ATTEMPTED, OBSERVED, and ACCEPTED are separate states. UNKNOWN remains UNKNOWN.
+
+## Local verification
+
+Use Python 3.12.14 (recorded in `.python-version`) and Git, then run:
+
+```sh
+python tools/verify.py
+```
+
+No third-party Python packages are required. This is the same entry point used
+by Flywheel Integrity CI: it runs every native contract, the read-only doctor,
+regenerates the source inventory/frontier, and rejects stale tracked projections.
+The command updates `generated/` through the existing generators; review any diff.
+Its result covers repository integrity, not an established production runtime.
