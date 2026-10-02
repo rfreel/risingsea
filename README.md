@@ -51,7 +51,7 @@ PASS, PROMOTED, AUTHORIZED, ATTEMPTED, OBSERVED, and ACCEPTED are separate state
 Use Python 3.12.14 (recorded in `.python-version`) and Git, then run:
 
 ```sh
-python tools/verify.py
+python3 tools/verify.py
 ```
 
 No third-party Python packages are required. This is the same entry point used

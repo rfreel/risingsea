@@ -18,4 +18,4 @@ jobs:
         with:
           python-version-file: .python-version
       - name: Verify native contracts and generated projections
-        run: python tools/verify.py
+        run: python3 tools/verify.py
